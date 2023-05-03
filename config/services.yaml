@@ -20,5 +20,21 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\State\EditEducationProcessor:
+        bind:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+
+    App\State\EditExperienceProcessor:
+        bind:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+
+    App\State\EditProjectProcessor:
+        bind:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+
+    App\State\EditUserProcessor:
+        bind:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

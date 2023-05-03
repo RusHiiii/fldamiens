@@ -6,9 +6,11 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\ProjectRepository;
+use App\State\EditProjectProcessor;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -18,11 +20,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['Project:read']],
     denormalizationContext: ['groups' => ['Project:write']],
+    order: ['year' => 'DESC']
 )]
 #[Get(uriTemplate: '/projects/{id}')]
 #[GetCollection(uriTemplate: '/projects')]
 #[Post(uriTemplate: '/admin/projects')]
-#[Put(uriTemplate: '/admin/projects/{id}')]
+#[Put(uriTemplate: '/admin/projects/{id}', processor: EditProjectProcessor::class)]
+#[Patch(uriTemplate: '/admin/projects/{id}', processor: EditProjectProcessor::class)]
 #[Delete(uriTemplate: '/admin/projects/{id}')]
 class Project
 {
@@ -168,5 +172,10 @@ class Project
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function update(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }

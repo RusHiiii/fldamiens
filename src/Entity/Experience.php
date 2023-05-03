@@ -6,9 +6,11 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\ExperienceRepository;
+use App\State\EditExperienceProcessor;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
@@ -18,11 +20,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['Experience:read']],
     denormalizationContext: ['groups' => ['Experience:write']],
+    order: ['startedAt' => 'DESC']
 )]
 #[Get(uriTemplate: '/experiences/{id}')]
 #[GetCollection(uriTemplate: '/experiences')]
 #[Post(uriTemplate: '/admin/experiences')]
-#[Put(uriTemplate: '/admin/experiences/{id}')]
+#[Put(uriTemplate: '/admin/experiences/{id}', processor: EditExperienceProcessor::class)]
+#[Patch(uriTemplate: '/admin/experiences/{id}', processor: EditExperienceProcessor::class)]
 #[Delete(uriTemplate: '/admin/experiences/{id}')]
 class Experience
 {
@@ -189,5 +193,10 @@ class Experience
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function update(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }

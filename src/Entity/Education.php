@@ -6,9 +6,11 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\EducationRepository;
+use App\State\EditEducationProcessor;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
@@ -18,11 +20,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['Education:read']],
     denormalizationContext: ['groups' => ['Education:write']],
+    order: ['startedAt' => 'DESC']
 )]
 #[Get(uriTemplate: '/educations/{id}')]
 #[GetCollection(uriTemplate: '/educations')]
 #[Post(uriTemplate: '/admin/educations')]
-#[Put(uriTemplate: '/admin/educations/{id}')]
+#[Put(uriTemplate: '/admin/educations/{id}', processor: EditEducationProcessor::class)]
+#[Patch(uriTemplate: '/admin/educations/{id}', processor: EditEducationProcessor::class)]
 #[Delete(uriTemplate: '/admin/educations/{id}')]
 class Education
 {
@@ -189,5 +193,10 @@ class Education
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function update(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }
