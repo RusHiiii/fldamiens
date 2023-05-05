@@ -11,22 +11,25 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\ExperienceRepository;
 use App\State\EditExperienceProcessor;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['Experience:read']],
+    normalizationContext: ['groups' => ['Experience:read', 'Media:read']],
     denormalizationContext: ['groups' => ['Experience:write']],
     order: ['startedAt' => 'DESC']
 )]
 #[Get(uriTemplate: '/experiences/{id}')]
 #[GetCollection(uriTemplate: '/experiences')]
-#[Post(uriTemplate: '/admin/experiences')]
-#[Put(uriTemplate: '/admin/experiences/{id}', processor: EditExperienceProcessor::class)]
-#[Patch(uriTemplate: '/admin/experiences/{id}', processor: EditExperienceProcessor::class)]
+#[Post(uriTemplate: '/admin/experiences', inputFormats: ['multipart' => ['multipart/form-data']])]
+#[Put(uriTemplate: '/admin/experiences/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditExperienceProcessor::class)]
+#[Patch(uriTemplate: '/admin/experiences/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditExperienceProcessor::class)]
 #[Delete(uriTemplate: '/admin/experiences/{id}')]
 class Experience
 {
@@ -37,46 +40,26 @@ class Experience
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Experience:read', 'Experience:write'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Experience:read', 'Experience:write'])]
     private ?string $company = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Experience:read', 'Experience:write'])]
     private ?string $city = null;
 
     #[ORM\Column]
-    #[Assert\NotNull]
     #[Groups(['Experience:read', 'Experience:write'])]
     private ?\DateTimeImmutable $startedAt = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\NotNull]
-    #[Assert\GreaterThan(propertyPath: "startedAt")]
     #[Groups(['Experience:read', 'Experience:write'])]
     private ?\DateTimeImmutable $endedAt = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank]
-    #[Assert\NotNull]
     #[Groups(['Experience:read', 'Experience:write'])]
     private ?string $description = null;
 
@@ -88,8 +71,17 @@ class Experience
     #[Groups(['Experience:read'])]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Embedded(class: Media::class)]
+    #[Groups(['Experience:read'])]
+    private Media $image;
+
+    #[Vich\UploadableField(mapping: "media_object", fileNameProperty: "image.filePath")]
+    #[Groups(['Experience:write'])]
+    public ?File $file = null;
+
     public function __construct()
     {
+        $this->image = new Media();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
     }
@@ -198,5 +190,25 @@ class Experience
     public function update(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getImage(): Media
+    {
+        return $this->image;
+    }
+
+    public function setImage(Media $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    public function setFile(?File $file): void
+    {
+        $this->file = $file;
     }
 }

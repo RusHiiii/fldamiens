@@ -1,0 +1,17 @@
+vich_uploader:
+    db_driver: orm
+    metadata:
+        type: attribute
+    mappings:
+        media_object:
+            uri_prefix: /media
+            upload_destination: '%kernel.project_dir%/public%uploadDestination%'
+            # Will rename uploaded files using a uniqueid as a prefix.
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+when@test:
+    vich_uploader:
+        mappings:
+            media_object:
+                uri_prefix: /media
+                upload_destination: '/tmp%uploadDestination%'

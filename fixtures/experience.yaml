@@ -1,0 +1,24 @@
+include:
+  - media.yaml
+
+App\Entity\Experience:
+  experience_{1..3}:
+    name: <sentence(2)>
+    company: <company()>
+    city: <city()>
+    startedAt: <(new DateTimeImmutable('22-09-2020'))>
+    endedAt: <(new DateTimeImmutable('19-11-2022'))>
+    description: <paragraph()>
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+    image: '@media_*'
+  experience:
+    name: 'mon experience'
+    company: 'ITNetwork'
+    city: 'Blois'
+    startedAt: <(new DateTimeImmutable('22-09-2020'))>
+    endedAt: <(new DateTimeImmutable('19-11-2022'))>
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec tincidunt libero.'
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+    image: '@media'

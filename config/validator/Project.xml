@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        https://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="App\Entity\Project">
+        <property name="name">
+            <constraint name="NotNull"/>
+            <constraint name="Length">
+                <option name="min">5</option>
+                <option name="max">50</option>
+            </constraint>
+        </property>
+        <property name="shortDescription">
+            <constraint name="NotNull"/>
+            <constraint name="Length">
+                <option name="min">5</option>
+                <option name="max">50</option>
+            </constraint>
+        </property>
+        <property name="description">
+            <constraint name="NotNull"/>
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="url">
+            <constraint name="Url"/>
+        </property>
+        <property name="year">
+            <constraint name="NotNull"/>
+        </property>
+        <property name="primaryFile">
+            <constraint name="NotNull"/>
+            <constraint name="File">
+                <option name="mimeTypes">
+                    <value>image/png</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="secondaryFile">
+            <constraint name="NotNull"/>
+            <constraint name="File">
+                <option name="mimeTypes">
+                    <value>image/png</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

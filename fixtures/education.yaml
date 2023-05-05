@@ -1,0 +1,24 @@
+include:
+  - media.yaml
+
+App\Entity\Education:
+  education_{1..5}:
+    name: <sentence(2)>
+    city: <city()>
+    studyType: <sentence(2)>
+    description: <paragraph()>
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+    startedAt: <(new DateTimeImmutable('22-09-2020'))>
+    endedAt: <(new DateTimeImmutable('19-11-2022'))>
+    image: '@media_*'
+  education:
+    name: 'iut clermont'
+    city: 'Clermont-Ferrand'
+    studyType: 'Licence'
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec tincidunt libero.'
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+    startedAt: <(new DateTimeImmutable('22-09-2020'))>
+    endedAt: <(new DateTimeImmutable('19-11-2022'))>
+    image: '@media'

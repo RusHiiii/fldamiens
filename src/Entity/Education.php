@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -11,22 +12,24 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\EducationRepository;
 use App\State\EditEducationProcessor;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: EducationRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['Education:read']],
+    normalizationContext: ['groups' => ['Education:read', 'Media:read']],
     denormalizationContext: ['groups' => ['Education:write']],
     order: ['startedAt' => 'DESC']
 )]
 #[Get(uriTemplate: '/educations/{id}')]
 #[GetCollection(uriTemplate: '/educations')]
-#[Post(uriTemplate: '/admin/educations')]
-#[Put(uriTemplate: '/admin/educations/{id}', processor: EditEducationProcessor::class)]
-#[Patch(uriTemplate: '/admin/educations/{id}', processor: EditEducationProcessor::class)]
+#[Post(uriTemplate: '/admin/educations', inputFormats: ['multipart' => ['multipart/form-data']])]
+#[Put(uriTemplate: '/admin/educations/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditEducationProcessor::class)]
+#[Patch(uriTemplate: '/admin/educations/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditEducationProcessor::class)]
 #[Delete(uriTemplate: '/admin/educations/{id}')]
 class Education
 {
@@ -37,48 +40,36 @@ class Education
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Education:read', 'Education:write'])]
     private ?string $name = null;
 
     #[ORM\Column]
-    #[Assert\NotNull]
     #[Groups(['Education:read', 'Education:write'])]
     private ?\DateTimeImmutable $startedAt = null;
 
     #[ORM\Column]
-    #[Assert\NotNull]
-    #[Assert\GreaterThan(propertyPath: "startedAt")]
     #[Groups(['Education:read', 'Education:write'])]
     private ?\DateTimeImmutable $endedAt = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Education:read', 'Education:write'])]
     private ?string $city = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Education:read', 'Education:write'])]
     private ?string $studyType = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank]
-    #[Assert\NotNull]
     #[Groups(['Education:read', 'Education:write'])]
     private ?string $description = null;
+
+    #[ORM\Embedded(class: Media::class)]
+    #[Groups(['Education:read'])]
+    private Media $image;
+
+    #[Vich\UploadableField(mapping: "media_object", fileNameProperty: "image.filePath")]
+    #[Groups(['Education:write'])]
+    public ?File $file = null;
 
     #[ORM\Column]
     #[Groups(['Education:read'])]
@@ -90,6 +81,7 @@ class Education
 
     public function __construct()
     {
+        $this->image = new Media();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
     }
@@ -198,5 +190,25 @@ class Education
     public function update(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getImage(): Media
+    {
+        return $this->image;
+    }
+
+    public function setImage(Media $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    public function setFile(?File $file): void
+    {
+        $this->file = $file;
     }
 }

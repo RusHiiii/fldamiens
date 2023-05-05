@@ -13,20 +13,22 @@ use App\Repository\ProjectRepository;
 use App\State\EditProjectProcessor;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['Project:read']],
+    normalizationContext: ['groups' => ['Project:read', 'Media:read']],
     denormalizationContext: ['groups' => ['Project:write']],
     order: ['year' => 'DESC']
 )]
 #[Get(uriTemplate: '/projects/{id}')]
 #[GetCollection(uriTemplate: '/projects')]
-#[Post(uriTemplate: '/admin/projects')]
-#[Put(uriTemplate: '/admin/projects/{id}', processor: EditProjectProcessor::class)]
-#[Patch(uriTemplate: '/admin/projects/{id}', processor: EditProjectProcessor::class)]
+#[Post(uriTemplate: '/admin/projects', inputFormats: ['multipart' => ['multipart/form-data']])]
+#[Put(uriTemplate: '/admin/projects/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditProjectProcessor::class)]
+#[Patch(uriTemplate: '/admin/projects/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditProjectProcessor::class)]
 #[Delete(uriTemplate: '/admin/projects/{id}')]
 class Project
 {
@@ -37,39 +39,40 @@ class Project
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Project:read', 'Project:write'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['Project:read', 'Project:write'])]
     private ?string $shortDescription = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank]
-    #[Assert\NotNull]
     #[Groups(['Project:read', 'Project:write'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\Url]
     #[Groups(['Project:read', 'Project:write'])]
     private ?string $url = null;
 
-    #[ORM\Column]
-    #[Assert\GreaterThan(value: 2010)]
-    #[Assert\NotNull]
+    #[ORM\Column(length: 4)]
     #[Groups(['Project:read', 'Project:write'])]
-    private ?int $year = null;
+    private ?string $year = null;
+
+    #[ORM\Embedded(class: Media::class)]
+    #[Groups(['Project:read'])]
+    private Media $primaryImage;
+
+    #[Vich\UploadableField(mapping: "media_object", fileNameProperty: "primaryImage.filePath")]
+    #[Groups(['Project:write'])]
+    public ?File $primaryFile = null;
+
+    #[ORM\Embedded(class: Media::class)]
+    #[Groups(['Project:read'])]
+    private Media $secondaryImage;
+
+    #[Vich\UploadableField(mapping: "media_object", fileNameProperty: "secondaryImage.filePath")]
+    #[Groups(['Project:write'])]
+    public ?File $secondaryFile = null;
 
     #[ORM\Column]
     #[Groups(['Project:read'])]
@@ -81,6 +84,8 @@ class Project
 
     public function __construct()
     {
+        $this->primaryImage = new Media();
+        $this->secondaryImage = new Media();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
     }
@@ -138,16 +143,14 @@ class Project
         return $this;
     }
 
-    public function getYear(): ?int
+    public function getYear(): ?string
     {
         return $this->year;
     }
 
-    public function setYear(int $year): self
+    public function setYear(?string $year): void
     {
         $this->year = $year;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
@@ -177,5 +180,45 @@ class Project
     public function update(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getPrimaryImage(): ?Media
+    {
+        return $this->primaryImage;
+    }
+
+    public function setPrimaryImage(?Media $primaryImage): void
+    {
+        $this->primaryImage = $primaryImage;
+    }
+
+    public function getPrimaryFile(): ?File
+    {
+        return $this->primaryFile;
+    }
+
+    public function setPrimaryFile(?File $primaryFile): void
+    {
+        $this->primaryFile = $primaryFile;
+    }
+
+    public function getSecondaryImage(): ?Media
+    {
+        return $this->secondaryImage;
+    }
+
+    public function setSecondaryImage(?Media $secondaryImage): void
+    {
+        $this->secondaryImage = $secondaryImage;
+    }
+
+    public function getSecondaryFile(): ?File
+    {
+        return $this->secondaryFile;
+    }
+
+    public function setSecondaryFile(?File $secondaryFile): void
+    {
+        $this->secondaryFile = $secondaryFile;
     }
 }
