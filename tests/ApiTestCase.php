@@ -27,7 +27,7 @@ class ApiTestCase extends ApiPlatformTestCase
     {
         $client = static::createClient();
 
-        $adminUser = $this->userRepository->findOneByEmail('admin@fldamiens.fr');
+        $adminUser = $this->userRepository->findOneBy(['email' => 'admin@fldamiens.fr']);
         $client->loginUser($adminUser);
 
         return $client;
@@ -37,7 +37,7 @@ class ApiTestCase extends ApiPlatformTestCase
     {
         $client = static::createClient();
 
-        $user = $this->userRepository->findOneByEmail('user@fldamiens.fr');
+        $user = $this->userRepository->findOneBy(['email' => 'user@fldamiens.fr']);
         $client->loginUser($user);
 
         return $client;

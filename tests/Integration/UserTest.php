@@ -11,12 +11,9 @@ class UserTest extends ApiTestCase
 {
     use RefreshDatabaseTrait;
 
-    private UserRepository $userRepository;
-
     protected function setUp(): void
     {
         parent::setUp();
-        $this->userRepository = self::getContainer()->get(UserRepository::class);
     }
 
     public function testGetCollectionWithUnconnectedUser(): void
