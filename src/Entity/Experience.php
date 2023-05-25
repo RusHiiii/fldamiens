@@ -23,7 +23,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     normalizationContext: ['groups' => ['Experience:read', 'Media:read']],
     denormalizationContext: ['groups' => ['Experience:write']],
-    order: ['startedAt' => 'DESC']
+    order: ['startedAt' => 'DESC'],
+    extraProperties: ['standard_put' => true]
 )]
 #[Get(uriTemplate: '/experiences/{id}')]
 #[GetCollection(uriTemplate: '/experiences')]

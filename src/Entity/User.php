@@ -21,7 +21,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => ['User:read']],
     denormalizationContext: ['groups' => ['User:write']],
-    order: ['createdAt' => 'DESC']
+    order: ['createdAt' => 'DESC'],
+    extraProperties: ['standard_put' => true]
 )]
 #[Get(uriTemplate: '/admin/users/{id}')]
 #[GetCollection(uriTemplate: '/admin/users')]

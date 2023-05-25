@@ -161,8 +161,7 @@ class UserTest extends ApiTestCase
                 'ROLE_USER'
             ],
             'firstname' => 'Admin',
-            'lastname' => 'Admin',
-            'createdAt' => '2020-10-15T00:00:00+02:00'
+            'lastname' => 'Admin'
         ]);
     }
 

@@ -64,7 +64,7 @@ jobs:
         env:
           DATABASE_URL: pgsql://${{ env.DATABASE_USER }}:${{ env.DATABASE_PASSWORD }}@127.0.0.1:${{ job.services.postgres.ports[5432] }}/fldamiens?charset=UTF-8
 
-      - name: Run test phpunit / behat
+      - name: Run test phpunit
         run: |
           ./vendor/bin/phpunit
         env:

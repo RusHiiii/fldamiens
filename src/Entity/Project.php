@@ -22,7 +22,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[ApiResource(
     normalizationContext: ['groups' => ['Project:read', 'Media:read']],
     denormalizationContext: ['groups' => ['Project:write']],
-    order: ['year' => 'DESC']
+    order: ['year' => 'DESC'],
+    extraProperties: ['standard_put' => true]
 )]
 #[Get(uriTemplate: '/projects/{id}')]
 #[GetCollection(uriTemplate: '/projects')]
