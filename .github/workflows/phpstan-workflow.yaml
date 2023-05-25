@@ -39,4 +39,4 @@ jobs:
 
       - name: Run phpstan
         run: |
-          .vendor/bin/phpstan analyse src tests -l 5
+          ./vendor/bin/phpstan analyse src tests -l 5
