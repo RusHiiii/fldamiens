@@ -1,32 +1,11 @@
-name: PHP Workflow
+name: PHPStan Workflow
 
 on:
   push:
 
-env:
-  DATABASE_NAME: fldamiens_test
-  DATABASE_USER: postgres
-  DATABASE_PASSWORD: postgres
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:11-buster
-        env:
-          POSTGRES_USER: ${{ env.DATABASE_USER }}
-          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ env.DATABASE_NAME }}
-          TZ: "Europe/Paris"
-        ports:
-          - 5432/tcp
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
       - name: set timezone
@@ -58,14 +37,6 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Run database migrations
+      - name: Run phpstan
         run: |
-          php bin/console doctrine:migrations:migrate --no-interaction --env=test
-        env:
-          DATABASE_URL: pgsql://${{ env.DATABASE_USER }}:${{ env.DATABASE_PASSWORD }}@127.0.0.1:${{ job.services.postgres.ports[5432] }}/fldamiens?charset=UTF-8
-
-      - name: Run test phpunit
-        run: |
-          ./vendor/bin/phpunit
-        env:
-          DATABASE_URL: pgsql://${{ env.DATABASE_USER }}:${{ env.DATABASE_PASSWORD }}@127.0.0.1:${{ job.services.postgres.ports[5432] }}/fldamiens?charset=UTF-8
+          .vendor/bin/phpstan analyse src tests -l 5
