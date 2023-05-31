@@ -1,0 +1,24 @@
+include:
+  - media.yaml
+
+App\Entity\Project:
+  project_{1..5}:
+    name: <sentence(2)>
+    shortDescription: <sentence(2)>
+    description: <paragraph(2)>
+    url: <url()>
+    year: <year()>
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+    primaryImage: '@media_*'
+    secondaryImage: '@media_*'
+  project:
+    name: 'photovergnat'
+    shortDescription: 'ceci est une petite description'
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec tincidunt libero.'
+    url: 'https://www.photovergnat.fr/'
+    year: '2020'
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+    primaryImage: '@media'
+    secondaryImage: '@media'

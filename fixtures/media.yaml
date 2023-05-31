@@ -1,0 +1,5 @@
+App\Entity\Media:
+  media_{1..10}:
+    filePath: <file('fixtures/media', '/tmp', false)>
+  media:
+    filePath: 'fichier.png'

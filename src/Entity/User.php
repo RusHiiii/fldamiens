@@ -15,14 +15,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ApiResource(
     normalizationContext: ['groups' => ['User:read']],
     denormalizationContext: ['groups' => ['User:write']],
-    order: ['createdAt' => 'DESC']
+    order: ['createdAt' => 'DESC'],
+    extraProperties: ['standard_put' => true]
 )]
 #[Get(uriTemplate: '/admin/users/{id}')]
 #[GetCollection(uriTemplate: '/admin/users')]
@@ -39,40 +39,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Assert\Email]
-    #[Assert\NotNull]
     #[Groups(['User:read', 'User:write'])]
     private ?string $email = null;
 
     #[ORM\Column]
-    #[Assert\Choice(choices: ['ROLE_USER', 'ROLE_ADMIN'], multiple: true)]
     #[Groups(['User:read', 'User:write'])]
     private array $roles = [];
 
     #[ORM\Column]
     private ?string $password = null;
 
-    #[Assert\NotBlank]
-    #[Assert\Regex('/[a-zA-Z0-9]+/')]
-    #[Assert\Length(min: 8)]
     #[Groups(['User:write'])]
     private ?string $plainPassword = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['User:read', 'User:write'])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 50,
-    )]
-    #[Assert\NotNull]
     #[Groups(['User:read', 'User:write'])]
     private ?string $lastname = null;
 

@@ -1,0 +1,28 @@
+include:
+  - media.yaml
+
+App\Entity\User:
+  user_{1..5}:
+    email: <email()>
+    roles: []
+    password: <encodePassword('pass')>
+    firstname: <firstName()>
+    lastname: <lastName()>
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+  admin:
+    email: 'admin@fldamiens.fr'
+    roles: ['ROLE_ADMIN']
+    password: <encodePassword('pass')>
+    firstname: 'Admin'
+    lastname: 'Admin'
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
+  user:
+    email: 'user@fldamiens.fr'
+    roles: []
+    password: <encodePassword('pass')>
+    firstname: 'User'
+    lastname: 'User'
+    createdAt: <(new DateTimeImmutable('15-10-2020'))>
+    updatedAt: <(new DateTimeImmutable('05-03-2023'))>
