@@ -20,9 +20,8 @@
             </constraint>
         </property>
         <property name="plainPassword">
-            <constraint name="NotBlank"/>
             <constraint name="Regex">
-                <option name="pattern">/^[a-zA-Z0-9]+/</option>
+                <option name="pattern">/^[a-zA-Z0-9]+$/</option>
             </constraint>
             <constraint name="Length">
                 <option name="min">8</option>

@@ -39,13 +39,5 @@
             <constraint name="NotNull"/>
             <constraint name="NotBlank"/>
         </property>
-        <property name="file">
-            <constraint name="NotNull"/>
-            <constraint name="File">
-                <option name="mimeTypes">
-                    <value>image/png</value>
-                </option>
-            </constraint>
-        </property>
     </class>
 </constraint-mapping>

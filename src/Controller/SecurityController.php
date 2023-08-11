@@ -26,6 +26,7 @@ class SecurityController extends AbstractController
             'firstname' => $user->getFirstname(),
             'lastname' => $user->getLastname(),
             'roles' => $user->getRoles(),
+            'exp' => (new \DateTime('+48 hours'))->getTimestamp()
         ]);
     }
 

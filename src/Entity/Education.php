@@ -28,10 +28,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 )]
 #[Get(uriTemplate: '/educations/{id}')]
 #[GetCollection(uriTemplate: '/educations')]
-#[Post(uriTemplate: '/admin/educations', inputFormats: ['multipart' => ['multipart/form-data']])]
-#[Put(uriTemplate: '/admin/educations/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditEducationProcessor::class)]
-#[Patch(uriTemplate: '/admin/educations/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditEducationProcessor::class)]
-#[Delete(uriTemplate: '/admin/educations/{id}')]
+#[Post(uriTemplate: '/educations', inputFormats: ['multipart' => ['multipart/form-data']])]
+#[Put(uriTemplate: '/educations/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditEducationProcessor::class)]
+#[Patch(uriTemplate: '/educations/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditEducationProcessor::class)]
+#[Delete(uriTemplate: '/educations/{id}')]
 class Education
 {
     #[ORM\Id]

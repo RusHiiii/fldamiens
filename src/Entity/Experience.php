@@ -28,10 +28,10 @@ use Doctrine\ORM\Mapping as ORM;
 )]
 #[Get(uriTemplate: '/experiences/{id}')]
 #[GetCollection(uriTemplate: '/experiences')]
-#[Post(uriTemplate: '/admin/experiences', inputFormats: ['multipart' => ['multipart/form-data']])]
-#[Put(uriTemplate: '/admin/experiences/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditExperienceProcessor::class)]
-#[Patch(uriTemplate: '/admin/experiences/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditExperienceProcessor::class)]
-#[Delete(uriTemplate: '/admin/experiences/{id}')]
+#[Post(uriTemplate: '/experiences', inputFormats: ['multipart' => ['multipart/form-data']])]
+#[Put(uriTemplate: '/experiences/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditExperienceProcessor::class)]
+#[Patch(uriTemplate: '/experiences/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditExperienceProcessor::class)]
+#[Delete(uriTemplate: '/experiences/{id}')]
 class Experience
 {
     #[ORM\Id]

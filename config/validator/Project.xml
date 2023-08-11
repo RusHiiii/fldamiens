@@ -29,21 +29,5 @@
         <property name="year">
             <constraint name="NotNull"/>
         </property>
-        <property name="primaryFile">
-            <constraint name="NotNull"/>
-            <constraint name="File">
-                <option name="mimeTypes">
-                    <value>image/png</value>
-                </option>
-            </constraint>
-        </property>
-        <property name="secondaryFile">
-            <constraint name="NotNull"/>
-            <constraint name="File">
-                <option name="mimeTypes">
-                    <value>image/png</value>
-                </option>
-            </constraint>
-        </property>
     </class>
 </constraint-mapping>
