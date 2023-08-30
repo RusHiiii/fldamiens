@@ -78,7 +78,7 @@ class UserTest extends ApiTestCase
             'roles' => [
                 'ROLE_ADMIN'
             ],
-            'plainPassword' => 'abcd123*',
+            'plainPassword' => 'abcd1237',
             'firstname' => 'test',
             'lastname' => 'test'
         ]]);
@@ -146,7 +146,7 @@ class UserTest extends ApiTestCase
             'roles' => [
                 'ROLE_ADMIN'
             ],
-            'plainPassword' => 'asazdsdez12*M',
+            'plainPassword' => 'asazdsdez12M',
             'firstname' => 'Admin',
             'lastname' => 'Admin'
         ]]);
