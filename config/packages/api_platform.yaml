@@ -1,3 +1,8 @@
 api_platform:
     defaults:
         pagination_enabled: false
+
+when@prod:
+    api_platform:
+        enable_swagger_ui: false
+        enable_swagger: false
