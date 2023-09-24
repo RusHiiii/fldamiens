@@ -5,8 +5,11 @@ import Link from "next/link";
 import IconTwitter from "../icons/IconTwitter";
 import IconLinkedin from "../icons/IconLinkedin";
 import IconGithub from "../icons/IconGithub";
+import {useRouter} from "next/router";
 
 function Menu() {
+  const router = useRouter();
+
   return (
     <header className="col-md-12">
       <nav>
@@ -18,17 +21,14 @@ function Menu() {
                   <IconHome width="1.5em" height="1.5em" />
                 </Link>
               </li>
-              <li className="tab">
+              <li className={router.pathname == "/formations" ? "tab active" : "tab"}>
                 <Link href="/formations">ETUDES</Link>
               </li>
-              <li className="tab">
+              <li className={router.pathname == "/experiences" ? "tab active" : "tab"}>
                 <Link href="/experiences">EXPERIENCES</Link>
               </li>
-              <li className="tab">
-                <Link href="/portfolio">PROJETS</Link>
-              </li>
-              <li className="tab">
-                <Link href="/contact">CONTACT</Link>
+              <li className={router.pathname == "/projets" ? "tab active" : "tab"}>
+                <Link href="/projets">PROJETS</Link>
               </li>
             </ul>
           </div>

@@ -751,6 +751,10 @@ ul.timeline{
     padding: 0 0 40px 30px;
 }
 
+.timeline li i{
+    height: 53px;
+}
+
 .timeline li:before{
     content: "";
     border: solid 2px;
@@ -786,7 +790,7 @@ ul.timeline{
 .timeline li:first-child i{
     float: left;
     margin-left: -30px;
-    padding: 18px 16px;
+    padding: 16px 16px;
     border-radius: 30px;
     margin: -13px -45px;
     background: #fff;
