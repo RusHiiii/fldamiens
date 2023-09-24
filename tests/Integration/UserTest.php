@@ -18,7 +18,7 @@ class UserTest extends ApiTestCase
 
     public function testGetCollectionWithUnconnectedUser(): void
     {
-        static::createClient()->request('GET', '/api/admin/users');
+        static::createClient()->request('GET', '/api/users');
 
         $this->assertResponseStatusCodeSame(401);
         $this->assertJsonContains(['hydra:description' => 'Full authentication is required to access this resource.']);
@@ -28,7 +28,7 @@ class UserTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $response = $client->request('GET', '/api/admin/users');
+        $response = $client->request('GET', '/api/users');
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertMatchesResourceCollectionJsonSchema(User::class);
@@ -39,7 +39,7 @@ class UserTest extends ApiTestCase
     {
         $client = $this->loginAsUser();
 
-        $client->request('GET', '/api/admin/users');
+        $client->request('GET', '/api/users');
 
         $this->assertResponseStatusCodeSame(403);
     }
@@ -73,12 +73,12 @@ class UserTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/users', ['json' => [
+        $client->request('POST', '/api/users', ['json' => [
             'email' => 'mail@fldamiens.fr',
             'roles' => [
                 'ROLE_ADMIN'
             ],
-            'plainPassword' => 'abcd123*',
+            'plainPassword' => 'abcd1237',
             'firstname' => 'test',
             'lastname' => 'test'
         ]]);
@@ -101,7 +101,7 @@ class UserTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/users', ['json' => [
+        $client->request('POST', '/api/users', ['json' => [
             'email' => 'mail@fldamiens.fr',
             'roles' => [
                 'TEST'
@@ -146,7 +146,7 @@ class UserTest extends ApiTestCase
             'roles' => [
                 'ROLE_ADMIN'
             ],
-            'plainPassword' => 'asazdsdez12*M',
+            'plainPassword' => 'asazdsdez12M',
             'firstname' => 'Admin',
             'lastname' => 'Admin'
         ]]);
@@ -191,7 +191,7 @@ class UserTest extends ApiTestCase
                 'roles' => [
                     'ROLE_ADMIN'
                 ],
-                'plainPassword' => 'asazdsdez12*M',
+                'plainPassword' => 'asazdsdez12M',
                 'firstname' => 'Admin',
                 'lastname' => 'Admin'
             ]

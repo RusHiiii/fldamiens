@@ -57,7 +57,7 @@ class ProjectTest extends ApiTestCase
 
     public function testPostProjectWithUnconnectedUser(): void
     {
-        static::createClient()->request('POST', '/api/admin/projects', [
+        static::createClient()->request('POST', '/api/projects', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -83,7 +83,7 @@ class ProjectTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/projects', [
+        $client->request('POST', '/api/projects', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -118,7 +118,7 @@ class ProjectTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/projects', [
+        $client->request('POST', '/api/projects', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -151,10 +151,6 @@ class ProjectTest extends ApiTestCase
                 [
                     'propertyPath' => 'year',
                     'message' => 'Cette valeur ne doit pas être nulle.'
-                ],
-                [
-                    'propertyPath' => 'secondaryFile',
-                    'message' => 'Cette valeur ne doit pas être nulle.'
                 ]
             ]
         ]);
@@ -166,7 +162,7 @@ class ProjectTest extends ApiTestCase
 
         $item = $this->projectRepository->findOneBy(['name' => 'photovergnat']);
 
-        $client->request('DELETE', sprintf('/api/admin/projects/%s', $item->getId()));
+        $client->request('DELETE', sprintf('/api/projects/%s', $item->getId()));
 
         $this->assertResponseStatusCodeSame(204);
     }
@@ -177,7 +173,7 @@ class ProjectTest extends ApiTestCase
 
         $item = $this->projectRepository->findOneBy(['name' => 'photovergnat']);
 
-        $client->request('PUT', sprintf('/api/admin/projects/%s', $item->getId()), [
+        $client->request('PUT', sprintf('/api/projects/%s', $item->getId()), [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -214,7 +210,7 @@ class ProjectTest extends ApiTestCase
 
         $item = $this->projectRepository->findOneBy(['name' => 'photovergnat']);
 
-        $client->request('PATCH', sprintf('/api/admin/projects/%s', $item->getId()), [
+        $client->request('PATCH', sprintf('/api/projects/%s', $item->getId()), [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [

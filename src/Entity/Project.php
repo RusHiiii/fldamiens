@@ -27,10 +27,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 )]
 #[Get(uriTemplate: '/projects/{id}')]
 #[GetCollection(uriTemplate: '/projects')]
-#[Post(uriTemplate: '/admin/projects', inputFormats: ['multipart' => ['multipart/form-data']])]
-#[Put(uriTemplate: '/admin/projects/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditProjectProcessor::class)]
-#[Patch(uriTemplate: '/admin/projects/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditProjectProcessor::class)]
-#[Delete(uriTemplate: '/admin/projects/{id}')]
+#[Post(uriTemplate: '/projects', inputFormats: ['multipart' => ['multipart/form-data']])]
+#[Put(uriTemplate: '/projects/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditProjectProcessor::class)]
+#[Patch(uriTemplate: '/projects/{id}', inputFormats: ['multipart' => ['multipart/form-data']], processor: EditProjectProcessor::class)]
+#[Delete(uriTemplate: '/projects/{id}')]
 class Project
 {
     #[ORM\Id]

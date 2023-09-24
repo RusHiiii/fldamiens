@@ -56,7 +56,7 @@ class ExperienceTest extends ApiTestCase
 
     public function testPostExperienceWithUnconnectedUser(): void
     {
-        static::createClient()->request('POST', '/api/admin/experiences', [
+        static::createClient()->request('POST', '/api/experiences', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -80,7 +80,7 @@ class ExperienceTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/experiences', [
+        $client->request('POST', '/api/experiences', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -114,7 +114,7 @@ class ExperienceTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/experiences', [
+        $client->request('POST', '/api/experiences', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -147,10 +147,6 @@ class ExperienceTest extends ApiTestCase
                 [
                     'propertyPath' => 'city',
                     'message' => 'Cette chaîne est trop courte. Elle doit avoir au minimum 5 caractères.'
-                ],
-                [
-                    'propertyPath' => 'file',
-                    'message' => 'Cette valeur ne doit pas être nulle.'
                 ]
             ]
         ]);
@@ -162,7 +158,7 @@ class ExperienceTest extends ApiTestCase
 
         $item = $this->experienceRepository->findOneBy(['company' => 'ITNetwork']);
 
-        $client->request('DELETE', sprintf('/api/admin/experiences/%s', $item->getId()));
+        $client->request('DELETE', sprintf('/api/experiences/%s', $item->getId()));
 
         $this->assertResponseStatusCodeSame(204);
     }
@@ -171,7 +167,7 @@ class ExperienceTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('DELETE', '/api/admin/experiences/555');
+        $client->request('DELETE', '/api/experiences/555');
 
         $this->assertResponseStatusCodeSame(404);
     }
@@ -182,7 +178,7 @@ class ExperienceTest extends ApiTestCase
 
         $item = $this->experienceRepository->findOneBy(['company' => 'ITNetwork']);
 
-        $client->request('PUT', sprintf('/api/admin/experiences/%s', $item->getId()), [
+        $client->request('PUT', sprintf('/api/experiences/%s', $item->getId()), [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -218,7 +214,7 @@ class ExperienceTest extends ApiTestCase
 
         $item = $this->experienceRepository->findOneBy(['company' => 'ITNetwork']);
 
-        $client->request('PATCH', sprintf('/api/admin/experiences/%s', $item->getId()), [
+        $client->request('PATCH', sprintf('/api/experiences/%s', $item->getId()), [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [

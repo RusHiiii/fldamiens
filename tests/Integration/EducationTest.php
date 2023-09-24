@@ -52,7 +52,7 @@ class EducationTest extends ApiTestCase
 
     public function testPostEducationWithUnconnectedUser(): void
     {
-        static::createClient()->request('POST', '/api/admin/educations', [
+        static::createClient()->request('POST', '/api/educations', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -76,7 +76,7 @@ class EducationTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/educations', [
+        $client->request('POST', '/api/educations', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -110,7 +110,7 @@ class EducationTest extends ApiTestCase
     {
         $client = $this->loginAsAdmin();
 
-        $client->request('POST', '/api/admin/educations', [
+        $client->request('POST', '/api/educations', [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -146,7 +146,7 @@ class EducationTest extends ApiTestCase
 
         $item = $this->educationRepository->findOneBy(['city' => 'Clermont-Ferrand']);
 
-        $client->request('DELETE', sprintf('/api/admin/educations/%s', $item->getId()));
+        $client->request('DELETE', sprintf('/api/educations/%s', $item->getId()));
 
         $this->assertResponseStatusCodeSame(204);
     }
@@ -157,7 +157,7 @@ class EducationTest extends ApiTestCase
 
         $item = $this->educationRepository->findOneBy(['city' => 'Clermont-Ferrand']);
 
-        $client->request('PUT', sprintf('/api/admin/educations/%s', $item->getId()), [
+        $client->request('PUT', sprintf('/api/educations/%s', $item->getId()), [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [
@@ -193,7 +193,7 @@ class EducationTest extends ApiTestCase
 
         $item = $this->educationRepository->findOneBy(['city' => 'Clermont-Ferrand']);
 
-        $client->request('PATCH', sprintf('/api/admin/educations/%s', $item->getId()), [
+        $client->request('PATCH', sprintf('/api/educations/%s', $item->getId()), [
             'headers' => ['Content-Type' => 'multipart/form-data'],
             'extra' => [
                 'parameters' => [

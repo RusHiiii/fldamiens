@@ -9,6 +9,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use App\Controller\MeController;
 use App\Repository\UserRepository;
 use App\State\EditUserProcessor;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,12 +25,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
     order: ['createdAt' => 'DESC'],
     extraProperties: ['standard_put' => true]
 )]
-#[Get(uriTemplate: '/admin/users/{id}')]
-#[GetCollection(uriTemplate: '/admin/users')]
-#[Post(uriTemplate: '/admin/users', processor: EditUserProcessor::class)]
-#[Put(uriTemplate: '/admin/users/{id}', processor: EditUserProcessor::class)]
-#[Patch(uriTemplate: '/admin/users/{id}', processor: EditUserProcessor::class)]
-#[Delete(uriTemplate: '/admin/users/{id}')]
+#[Get(uriTemplate: '/users/{id}')]
+#[Get(uriTemplate: '/me', controller: MeController::class)]
+#[GetCollection(uriTemplate: '/users')]
+#[Post(uriTemplate: '/users', processor: EditUserProcessor::class)]
+#[Put(uriTemplate: '/users/{id}', processor: EditUserProcessor::class)]
+#[Patch(uriTemplate: '/users/{id}', processor: EditUserProcessor::class)]
+#[Delete(uriTemplate: '/users/{id}')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
