@@ -1,6 +1,6 @@
 import {AppProps} from "next/app";
 import { Roboto } from 'next/font/google'
-import {NextPage} from "next";
+import {Metadata, NextPage} from "next";
 import {ReactElement, ReactNode} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import './../styles/app.css';

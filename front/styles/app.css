@@ -940,13 +940,15 @@ ul.timeline{
 
 #portfolio .cbp-item figure .icon i{
     color: #fff;
-    padding: 17px 0 16px;
+    padding: 17px 0 14px;
     min-width: 50px;
     border-radius: 50px;
     text-align: center;
     transition: all ease 0.3s;
     text-align: center;
     background: rgba(3, 122, 249, 0.80);
+    padding-left: 17px;
+    padding-right: 17px;
 }
 
 #portfolio .cbp-item figure .icon i:before{

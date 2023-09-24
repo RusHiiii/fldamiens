@@ -181,7 +181,9 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout>
       <Head>
         <title>Florent Damiens - Accueil</title>
+        <meta property="description" content="Florent Damiens développeur sur Clermont-Ferrand" />
         <meta property="og:title" content="Florent Damiens - Accueil" key="title" />
+        <meta property="og:description" content="Florent Damiens développeur sur Clermont-Ferrand" key="description" />
       </Head>
 
       {page}

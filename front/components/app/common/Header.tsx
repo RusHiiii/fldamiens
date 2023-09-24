@@ -6,9 +6,15 @@ import IconTwitter from "../icons/IconTwitter";
 import IconLinkedin from "../icons/IconLinkedin";
 import IconGithub from "../icons/IconGithub";
 import {useRouter} from "next/router";
+import {useEffect, useState} from "react";
 
 function Menu() {
   const router = useRouter();
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+
+  useEffect(() => {
+    setShowMobileMenu(false)
+  }, [router.asPath]);
 
   return (
     <header className="col-md-12">
@@ -39,7 +45,7 @@ function Menu() {
                 <IconPlane width="0.8em" height="0.8em" />
               </div>
             </a>
-            <div className="hamburger pull-right hidden-lg hidden-md">
+            <div className="hamburger pull-right hidden-lg hidden-md" onClick={() => setShowMobileMenu(!showMobileMenu)}>
               <IconBars width="1em" height="1em" />
             </div>
             <div className="hidden-md social-icons pull-right">
@@ -55,6 +61,30 @@ function Menu() {
             </div>
           </div>
         </div>
+        {showMobileMenu && (
+          <div className="hidden-lg hidden-md">
+            <div className="menuout">
+              <div className="menuin">
+                <ul className="tabs">
+                  <li className="tab">
+                    <Link className="home-btn" href="/">
+                      <IconHome width="1.5em" height="1.5em" />
+                    </Link>
+                  </li>
+                  <li className={router.pathname == "/formations" ? "tab active" : "tab"}>
+                    <Link href="/formations">ETUDES</Link>
+                  </li>
+                  <li className={router.pathname == "/experiences" ? "tab active" : "tab"}>
+                    <Link href="/experiences">EXPERIENCES</Link>
+                  </li>
+                  <li className={router.pathname == "/projets" ? "tab active" : "tab"}>
+                    <Link href="/projets">PROJETS</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );

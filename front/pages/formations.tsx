@@ -68,7 +68,9 @@ FormationPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout>
       <Head>
         <title>Florent Damiens - Formations</title>
+        <meta property="description" content="Mes différentes formations sur Clermont-Ferrand" />
         <meta property="og:title" content="Florent Damiens - Formations" key="title" />
+        <meta property="og:description" content="Mes différentes formations sur Clermont-Ferrand" key="description" />
       </Head>
 
       {page}

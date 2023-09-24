@@ -97,6 +97,8 @@ ExperiencePage.getLayout = function getLayout(page: ReactElement) {
       <Head>
         <title>Florent Damiens - Expériences</title>
         <meta property="og:title" content="Florent Damiens - Expériences" key="title" />
+        <meta property="og:description" content="Mes différentes expériences en tant développeur web" key="description" />
+        <meta property="description" content="Mes différentes expériences en tant développeur web" />
       </Head>
 
       {page}
