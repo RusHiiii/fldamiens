@@ -1,10 +1,10 @@
-import IconHome from "../icon/IconHome";
-import IconPlane from "../icon/IconPlane";
-import IconBars from "../icon/IconBars";
+import IconHome from "../icons/IconHome";
+import IconPlane from "../icons/IconPlane";
+import IconBars from "../icons/IconBars";
 import Link from "next/link";
-import IconTwitter from "../icon/IconTwitter";
-import IconLinkedin from "../icon/IconLinkedin";
-import IconGithub from "../icon/IconGithub";
+import IconTwitter from "../icons/IconTwitter";
+import IconLinkedin from "../icons/IconLinkedin";
+import IconGithub from "../icons/IconGithub";
 
 function Menu() {
   return (

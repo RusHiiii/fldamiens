@@ -1,5 +1,5 @@
-import IconDownload from "../icon/IconDownload";
-import IconCoding from "../icon/IconCoding";
+import IconDownload from "../icons/IconDownload";
+import IconCoding from "../icons/IconCoding";
 import Image from 'next/image'
 
 function Profile() {
@@ -7,7 +7,7 @@ function Profile() {
     <div className="profile">
       <div className="profile-name">
         <span className="name">Florent Damiens</span><br/>
-        <span className="job">Développeur FullStack</span>
+        <span className="job">Développeur Web</span>
       </div>
       <figure className="profile-image">
         <Image width="270" height="270" src="/images/profile.jpg" alt="Profile" />

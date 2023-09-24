@@ -1,10 +1,16 @@
-import {ReactElement} from "react";
+import {ReactElement, useState} from "react";
 import AppLayout from "../components/app/layout/AppLayout";
 import Head from "next/head";
-import IconHome from "../components/app/icon/IconHome";
-import IconHtml from "../components/app/icon/IconHtml";
+import IconPhp from "../components/app/icons/IconPhp";
+import IconWeb from "../components/app/icons/IconWeb";
+import IconServer from "../components/app/icons/IconServer";
+import IconDatabase from "../components/app/icons/IconDatabase";
+import IconUml from "../components/app/icons/IconUml";
+import IconGit from "../components/app/icons/IconGit";
 
 function HomePage() {
+  const [showMainSkill, setShowMainSkill] = useState<boolean>(true);
+
   return (
     <div className="col-md-12">
       <div id="content" className="panel-container">
@@ -30,50 +36,78 @@ function HomePage() {
                   <span></span>
                   <h2>Mes compétences</h2>
                 </div>
-                <div className="row">
-                  <div className="col-md-3 col-sm-6 col-xs-12">
-                    <div className="service">
-                      <div className="icon">
-                        <IconHtml width="5em" height="5em" />
+                {showMainSkill && (
+                  <div className="row">
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconPhp width="5em" height="5em" />
+                        </div>
+                        <span className="title">Symfony / PHP</span>
+                        <p className="little-text">Développement orienté Back-End</p>
                       </div>
-                      <span className="title">Symfony / PHP</span>
-                      <p className="little-text">Développement Back-End</p>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconWeb width="5em" height="5em" />
+                        </div>
+                        <span className="title">React.js / Next.js</span>
+                        <p className="little-text">Développement orienté Front-End</p>
+                      </div>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconServer width="5em" height="5em" />
+                        </div>
+                        <span className="title">Chef / Grafana</span>
+                        <p className="little-text">Gestion et monitoring d'une infrastructure</p>
+                      </div>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconDatabase width="5em" height="5em" />
+                        </div>
+                        <span className="title">PostgreSQL / MySQL</span>
+                        <p className="little-text">Système de gestion de base de données</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="col-md-3 col-sm-6 col-xs-12">
-                    <div className="service">
-                      <div className="icon">
-                        <img src="images/website.png" alt=""/>
+                )}
+                {!showMainSkill && (
+                  <div className="row">
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconUml width="5em" height="5em" />
+                        </div>
+                        <span className="title">UML / Merise</span>
+                        <p className="little-text">Analyse applicative et de la base de données</p>
                       </div>
-                      <span className="title">React.js / Next.js</span>
-                      <p className="little-text">Développement Front-End</p>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconGit width="5em" height="5em" />
+                        </div>
+                        <span className="title">Git</span>
+                        <p className="little-text">Gestionnaire de version (Github)</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="col-md-3 col-sm-6 col-xs-12">
-                    <div className="service">
-                      <div className="icon">
-                        <img src="images/hosting.png" alt=""/>
-                      </div>
-                      <span className="title">Chef / Grafana</span>
-                      <p className="little-text">Monitoring et gestion d'une infrastructure</p>
-                    </div>
-                  </div>
-                  <div className="col-md-3 col-sm-6 col-xs-12">
-                    <div className="service">
-                      <div className="icon">
-                        <img src="images/database.png" alt=""/>
-                      </div>
-                      <span className="title">PostgreSQL / MySQL</span>
-                      <p className="little-text">Développement Front-End depuis 5 ans.</p>
-                    </div>
-                  </div>
-                </div>
+                )}
                 <div className="row">
                   <div className="sbn-list">
                     <div className="sbn sbn-bullet">
                       <ul>
-                        <li><a className="is-active" href="#">1</a></li>
-                        <li><a href="#">2</a></li>
+                        <li onClick={() => setShowMainSkill(true)}>
+                          <a className={showMainSkill ? "is-active" : ""} >1</a>
+                        </li>
+                        <li onClick={() => setShowMainSkill(false)}>
+                          <a className={!showMainSkill ? "is-active" : ""}>2</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -90,21 +124,21 @@ function HomePage() {
               </div>
               <ul className="skill-list">
                 <li>
-                  <h3>Curieux</h3>
-                  <div className="progress">
-                    <div className="percentage" style={{width: '80%'}}></div>
-                  </div>
-                </li>
-                <li>
                   <h3>Rigoureux</h3>
                   <div className="progress">
-                    <div className="percentage" style={{width: '80%'}}></div>
+                    <div className="percentage" style={{width: '100%'}}></div>
                   </div>
                 </li>
                 <li>
                   <h3>Esprit d'équipe</h3>
                   <div className="progress">
-                    <div className="percentage" style={{width: '80%'}}></div>
+                    <div className="percentage" style={{width: '100%'}}></div>
+                  </div>
+                </li>
+                <li>
+                  <h3>Curieux</h3>
+                  <div className="progress">
+                    <div className="percentage" style={{width: '90%'}}></div>
                   </div>
                 </li>
               </ul>
@@ -112,7 +146,7 @@ function HomePage() {
             <section className="code-skills col-md-6 padding_60">
               <div className="section-title bottom_45">
                 <span></span>
-                <h2>Centre d'intérêt</h2>
+                <h2>Centres d'intérêt</h2>
               </div>
               <ul className="skill-list">
                 <li>
@@ -122,15 +156,15 @@ function HomePage() {
                   </div>
                 </li>
                 <li>
-                  <h3>Photo / Astrophoto</h3>
+                  <h3>Photo</h3>
                   <div className="progress">
-                    <div className="percentage" style={{width: '80%'}}></div>
+                    <div className="percentage" style={{width: '90%'}}></div>
                   </div>
                 </li>
                 <li>
                   <h3>Randonnée</h3>
                   <div className="progress">
-                    <div className="percentage" style={{width: '80%'}}></div>
+                    <div className="percentage" style={{width: '90%'}}></div>
                   </div>
                 </li>
               </ul>
