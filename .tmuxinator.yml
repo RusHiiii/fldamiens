@@ -9,3 +9,7 @@ windows:
       panes:
         - yarn run dev
         - ./node_modules/.bin/tsc --watch
+  - back:
+      layout: tiled
+      panes:
+        - symfony server:start

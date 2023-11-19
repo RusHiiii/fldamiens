@@ -1,10 +1,16 @@
 import {ReactElement, useState} from "react";
 import AppLayout from "../components/app/layout/AppLayout";
 import Head from "next/head";
-import IconGraduation from "../components/app/icons/IconGraduation";
 import IconSuitcase from "../components/app/icons/IconSuitcase";
+import {Experience} from "../types/experience";
 
-function ExperiencePage() {
+type ExperiencePageProps = {
+  experiences: Array<Experience>;
+  error: null | string;
+}
+
+function ExperiencePage({ experiences }: ExperiencePageProps) {
+
   return (
     <div className="col-md-12">
       <div id="content" className="panel-container">
@@ -89,6 +95,31 @@ function ExperiencePage() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const res: Response = await fetch(`${process.env.API_URL}/api/experiences`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (!res.ok) {
+    return {
+      experiences: [],
+      error: 'Impossible de charger les expériences :('
+    }
+  }
+
+  const experiences: Array<Experience> = await res.json();
+
+  return {
+    props: {
+      experiences: experiences,
+      error: null
+    },
+  };
 }
 
 ExperiencePage.getLayout = function getLayout(page: ReactElement) {

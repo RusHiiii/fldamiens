@@ -35,12 +35,14 @@ function Profile() {
         </li>
       </ul>
       <div className="col-md-12">
-        <button className="site-btn icon">
-          Télécharger mon CV
-          <div className="rounded">
-            <IconDownload width="1em" height="1em" />
-          </div>
-        </button>
+        <a href="/cv/cv.pdf" download>
+          <button className="site-btn icon">
+            Télécharger mon CV
+            <div className="rounded">
+              <IconDownload width="1em" height="1em" />
+            </div>
+          </button>
+        </a>
       </div>
     </div>
   );

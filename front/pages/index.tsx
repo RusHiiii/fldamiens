@@ -7,8 +7,9 @@ import IconServer from "../components/app/icons/IconServer";
 import IconDatabase from "../components/app/icons/IconDatabase";
 import IconUml from "../components/app/icons/IconUml";
 import IconGit from "../components/app/icons/IconGit";
-
-function HomePage() {
+import {NextPageWithLayout} from "./_app";
+import IconLinux from "../components/app/icons/IconLinux";
+const HomePage: NextPageWithLayout = () => {
   const [showMainSkill, setShowMainSkill] = useState<boolean>(true);
 
   return (
@@ -96,6 +97,15 @@ function HomePage() {
                         <p className="little-text">Gestionnaire de version (Github)</p>
                       </div>
                     </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconLinux width="5em" height="5em" />
+                        </div>
+                        <span className="title">Linux</span>
+                        <p className="little-text">Système d'exploitation (Debian / Ubuntu)</p>
+                      </div>
+                    </div>
                   </div>
                 )}
                 <div className="row">
@@ -138,7 +148,7 @@ function HomePage() {
                 <li>
                   <h3>Curieux</h3>
                   <div className="progress">
-                    <div className="percentage" style={{width: '90%'}}></div>
+                    <div className="percentage" style={{width: '100%'}}></div>
                   </div>
                 </li>
               </ul>
@@ -190,5 +200,4 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
     </AppLayout>
   )
 }
-
 export default HomePage;

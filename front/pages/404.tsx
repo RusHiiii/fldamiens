@@ -2,8 +2,9 @@ import AppLayout from "../components/app/layout/AppLayout";
 import Head from "next/head";
 import Link from "next/link";
 import {ReactElement} from "react";
+import {NextPageWithLayout} from "./_app";
 
-function NotFoundPage() {
+const NotFoundPage: NextPageWithLayout = () => {
   return (
     <div className="col-md-12">
       <div id="content" className="panel-container">
@@ -37,7 +38,7 @@ NotFoundPage.getLayout = function getLayout(page: ReactElement) {
     <AppLayout>
       <Head>
         <title>Florent Damiens - Oops :(</title>
-        <meta property="og:title" content="Florent Damiens - Oops :(" key="title" />
+        <meta property="og:title" content="Florent Damiens - Développeur" key="title" />
       </Head>
 
       {page}

@@ -20,7 +20,7 @@ function Menu() {
     <header className="col-md-12">
       <nav>
         <div className="row">
-          <div className="col-lg-8 col-md-12 col-sm-8 col-xs-4">
+          <div className="col-lg-8 col-md-8 col-sm-8 col-xs-4">
             <ul className="tabs">
               <li className="tab">
                 <Link className="home-btn" href="/">
@@ -38,8 +38,8 @@ function Menu() {
               </li>
             </ul>
           </div>
-          <div className="col-lg-4 col-sm-4 col-xs-8 hidden-md dynamic">
-            <a href="mailto:damiens.florent@orange.fr" className="pull-right site-btn icon hidden-xs contact-me hidden-md">
+          <div className="col-lg-4 col-sm-4 col-xs-8 dynamic">
+            <a href="mailto:damiens.florent@orange.fr" className="pull-right site-btn icon hidden-xs contact-me">
               Me contacter
               <div className="rounded">
                 <IconPlane width="0.8em" height="0.8em" />

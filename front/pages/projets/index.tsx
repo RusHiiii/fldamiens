@@ -2,8 +2,16 @@ import {ReactElement, useState} from "react";
 import AppLayout from "../../components/app/layout/AppLayout";
 import Head from "next/head";
 import IconClone from "../../components/app/icons/IconClone";
+import Link from "next/link";
+import {Project} from "../../types/project";
+import {NextPageWithLayout} from "../_app";
 
-function ProjectPage() {
+type ProjectPageProps = {
+  projects: Array<Project>;
+  error: null | string;
+}
+
+const ProjectPage: NextPageWithLayout<ProjectPageProps> = ({ projects, error }) => {
   return (
     <div className="col-md-12">
       <div id="content" className="panel-container">
@@ -34,7 +42,7 @@ function ProjectPage() {
                   </a>
                 </div>
                 <div className="cbp-item webdesign col-lg-4 col-md-6 col-xs-6">
-                  <a href="/work-01.html">
+                  <Link href="/projets/1">
                     <figure>
                       <div className="icon">
                         <i>
@@ -42,12 +50,12 @@ function ProjectPage() {
                         </i>
                       </div>
                       <img src="images/work-01.jpg" alt="" />
-                        <figcaption>
-                          <span className="title">Babel Admin</span><br/>
-                          <span className="info">An admin template design.</span>
-                        </figcaption>
+                      <figcaption>
+                        <span className="title">Babel Admin</span><br/>
+                        <span className="info">An admin template design.</span>
+                      </figcaption>
                     </figure>
-                  </a>
+                  </Link>
                 </div>
                 <div className="cbp-item webdesign col-lg-4 col-md-6 col-xs-6">
                   <a href="/work-01.html">
@@ -72,6 +80,33 @@ function ProjectPage() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const res: Response = await fetch(`${process.env.API_URL}/api/projects`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+
+  if (!res.ok) {
+    return {
+      props: {
+        error: 'Impossible de charger les projets :(',
+        educations: []
+      },
+    };
+  }
+
+  const projects: Array<Project> = await res.json();
+
+  return {
+    props: {
+      projects: projects,
+      error: null
+    },
+  };
 }
 
 ProjectPage.getLayout = function getLayout(page: ReactElement) {

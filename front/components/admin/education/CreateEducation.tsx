@@ -10,6 +10,7 @@ import {
   required,
   minLength,
 } from 'react-admin';
+import {RichTextInput} from 'ra-input-rich-text';
 import {Grid, Typography} from "@mui/material";
 import {Box} from "@mui/system";
 
@@ -38,7 +39,20 @@ export default function CreateEducation() {
               <TextInput source="studyType" isRequired fullWidth name="studyType" label="Nom du diplôme" validate={[required(), minLength(5)]}/>
             </Box>
             <Box flex={1} mr="0.5em">
-              <TextInput fullWidth multiline minRows={5} name="description" source={"description"} label="Description" validate={required()}/>
+              <RichTextInput
+                sx={{
+                '& .RaRichTextInput-editorContent': {
+                  '& .ProseMirror': {
+                    minHeight: '15em'
+                  }
+                }
+              }}
+                fullWidth
+                name="description"
+                source={"description"}
+                label="Description"
+                validate={required()}
+              />
             </Box>
             <Typography variant="h6" gutterBottom>
               Logo

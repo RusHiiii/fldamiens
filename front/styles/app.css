@@ -208,6 +208,10 @@ hr{
    transition: all ease 0.3s;
 }
 
+.site-btn:focus, .site-btn:visited{
+    color: white;
+}
+
 .site-btn.icon{
     text-align: left;
     padding: 1px 6px 1px 19px;
@@ -964,22 +968,28 @@ ul.timeline{
 }
 
 .cbp-popup-singlePage .cbp-popup-close{
+    background: url('/images/folio.png') -74px -3px no-repeat scroll transparent !important;
 }
 
 .cbp-popup-singlePage .cbp-popup-prev {
+    background: url('/images/folio.png') -23px -3px no-repeat scroll transparent !important;
 }
 
 .cbp-popup-singlePage .cbp-popup-next {
+    background: url('/images/folio.png') -127px -3px no-repeat scroll transparent !important;
 }
 
 
 .cbp-popup-singlePage .cbp-popup-close:hover{
+    background: url('/images/folio.png') -74px -46px no-repeat scroll transparent !important;
 }
 
 .cbp-popup-singlePage .cbp-popup-prev:hover {
+    background: url('/images/folio.png') -23px -46px no-repeat scroll transparent !important;
 }
 
 .cbp-popup-singlePage .cbp-popup-next:hover {
+    background: url('/images/folio.png') -127px -46px no-repeat scroll transparent !important;
 }
 
 .cbp-popup-singlePage .cbp-popup-navigation-wrap {
@@ -2113,4 +2123,5 @@ ul.profile-information li:before{
 
 .service .icon {
     margin-bottom: 10px;
+    text-align: center;
 }
