@@ -1,7 +1,7 @@
 import moment from "moment";
 import {useMemo} from "react";
 
-function Footer() {
+const Footer = () => {
   const currentYear = useMemo(() => {
     return moment().year();
   }, []);

@@ -712,11 +712,10 @@ section.graybg{
 
 .clients .client{
     background: #fff;
-    padding: 18px;
+    padding: 9px;
     border-radius: 8px;
     box-shadow: 0px 0px 48px 0px rgba(4, 6, 4, 0.08);
     width: 100%;
-    padding: 26px 16px;
 }
 /*
 .clients .col-md-3:nth-child(2) .client {
@@ -2119,6 +2118,10 @@ ul.profile-information li:before{
 
 .portfolio {
     background-color: #fafafa;
+}
+
+.date-format{
+    text-transform: capitalize;
 }
 
 .service .icon {

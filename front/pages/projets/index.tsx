@@ -1,10 +1,9 @@
 import {ReactElement, useState} from "react";
 import AppLayout from "../../components/app/layout/AppLayout";
 import Head from "next/head";
-import IconClone from "../../components/app/icons/IconClone";
-import Link from "next/link";
 import {Project} from "../../types/project";
 import {NextPageWithLayout} from "../_app";
+import ProjectList from "../../components/app/project/ProjectList";
 
 type ProjectPageProps = {
   projects: Array<Project>;
@@ -24,56 +23,13 @@ const ProjectPage: NextPageWithLayout<ProjectPageProps> = ({ projects, error }) 
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-12 col-md-12 col-xs-12 portfolio">
-                <div className="cbp-item webdesign col-lg-4 col-md-6 col-xs-6">
-                  <a href="/work-01.html">
-                    <figure>
-                      <div className="icon">
-                        <i>
-                          <IconClone height="1em" width="1em" />
-                        </i>
-                      </div>
-                      <img src="images/work-01.jpg" alt="" />
-                        <figcaption>
-                          <span className="title">Babel Admin</span><br/>
-                          <span className="info">An admin template design.</span>
-                        </figcaption>
-                    </figure>
-                  </a>
+              <ProjectList projects={projects} />
+
+              {error && (
+                <div className="col-lg-12 col-md-12 col-xs-12">
+                  <p className="little-text">{error}</p>
                 </div>
-                <div className="cbp-item webdesign col-lg-4 col-md-6 col-xs-6">
-                  <Link href="/projets/1">
-                    <figure>
-                      <div className="icon">
-                        <i>
-                          <IconClone height="1em" width="1em" />
-                        </i>
-                      </div>
-                      <img src="images/work-01.jpg" alt="" />
-                      <figcaption>
-                        <span className="title">Babel Admin</span><br/>
-                        <span className="info">An admin template design.</span>
-                      </figcaption>
-                    </figure>
-                  </Link>
-                </div>
-                <div className="cbp-item webdesign col-lg-4 col-md-6 col-xs-6">
-                  <a href="/work-01.html">
-                    <figure>
-                      <div className="icon">
-                        <i>
-                          <IconClone height="1em" width="1em" />
-                        </i>
-                      </div>
-                      <img src="images/work-01.jpg" alt="" />
-                        <figcaption>
-                          <span className="title">Babel Admin</span><br/>
-                          <span className="info">An admin template design.</span>
-                        </figcaption>
-                    </figure>
-                  </a>
-                </div>
-              </div>
+              )}
             </div>
           </section>
         </div>
@@ -94,7 +50,7 @@ export async function getServerSideProps() {
     return {
       props: {
         error: 'Impossible de charger les projets :(',
-        educations: []
+        projects: []
       },
     };
   }

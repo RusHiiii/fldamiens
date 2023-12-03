@@ -2,7 +2,7 @@ import IconDownload from "../icons/IconDownload";
 import IconCoding from "../icons/IconCoding";
 import Image from 'next/image'
 
-function Profile() {
+const Profile = () => {
   return (
     <div className="profile">
       <div className="profile-name">
@@ -29,9 +29,6 @@ function Profile() {
         </li>
         <li>
           <p><span>Mail :</span> damiens.florent@orange.fr</p>
-        </li>
-        <li>
-          <p><span>Poste :</span> ITNetwork</p>
         </li>
       </ul>
       <div className="col-md-12">

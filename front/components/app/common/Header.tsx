@@ -8,7 +8,7 @@ import IconGithub from "../icons/IconGithub";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 
-function Menu() {
+const Menu = () => {
   const router = useRouter();
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
 

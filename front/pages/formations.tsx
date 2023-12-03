@@ -4,6 +4,8 @@ import Head from "next/head";
 import IconGraduation from "../components/app/icons/IconGraduation";
 import {Education} from "../types/education";
 import {NextPageWithLayout} from "./_app";
+import EducationList from "../components/app/education/EducationList";
+import EducationLogoList from "../components/app/education/EducationLogoList";
 
 type FormationPageProps = {
   educations: Array<Education>;
@@ -24,46 +26,17 @@ const FormationPage: NextPageWithLayout<FormationPageProps> = ({ educations, err
               </div>
               <div className="row">
                 <div className="education-history col-md-12 padding_15 padbot_30">
-                  <ul className="timeline col-md-12 top_30">
-                    <li>
-                      <i>
-                        <IconGraduation width="1.25em" height="1.25em" />
-                      </i>
-                      <h2 className="timeline-title">Diplômes et Formations</h2>
-                    </li>
-                    <li>
-                      <h3 className="line-title">Abc University of Los Angeles</h3>
-                      <span>2004 - 2009</span>
-                      <p className="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor. Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p><br/>
-                      <p className="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor. Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p>
-                    </li>
-                    <li>
-                      <h3 className="line-title">Drawing Course</h3>
-                      <span>2003 - 2004</span>
-                      <p className="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor. Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p><br/>
-                      <p className="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor. Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p>
-                    </li>
-                    <li>
-                      <h3 className="line-title">Abc High School</h3>
-                      <span>2000 - 2003</span>
-                      <p className="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor. Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p><br/>
-                      <p className="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor. Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p>
-                    </li>
-                  </ul>
+                  <EducationList educations={educations} />
+
+                  {error && (
+                    <p className="little-text">{error}</p>
+                  )}
                 </div>
               </div>
             </section>
           </div>
           <div className="row">
-            <section className="clients col-md-12 graybg padding_45 padbot_45">
-              <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                  <div className="client">
-                    <img src="images/itn.png" alt="" />
-                  </div>
-                </div>
-              </div>
-            </section>
+            <EducationLogoList educations={educations} />
           </div>
         </div>
       </div>
@@ -81,8 +54,10 @@ export async function getServerSideProps() {
 
   if (!res.ok) {
     return {
-      educations: [],
-      error: 'Impossible de charger les formations :('
+      props: {
+        educations: [],
+        error: 'Impossible de charger les formations :('
+      }
     }
   }
 

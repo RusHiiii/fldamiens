@@ -30,7 +30,7 @@ export default function CreateEducation() {
               Informations
             </Typography>
             <Box flex={1} mr="0.5em">
-              <TextInput source="name" fullWidth name="name" label="Nom" validate={[required(), minLength(5)]}/>
+              <TextInput source="name" fullWidth name="name" label="Nom" validate={[required(), minLength(3)]}/>
             </Box>
             <Box flex={1} mr="0.5em">
               <TextInput source="city" fullWidth name="city" label="Ville" validate={[required(), minLength(5)]} />

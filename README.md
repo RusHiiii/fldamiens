@@ -1,6 +1,11 @@
 # Florent Damiens
 
-Ce projet utilise PHP 8.1, PostgreSQL 13 et Node >= 16
+Stack technique :
+- PHP 8.1
+- PostgreSQL 13
+- Node >= 1
+- Next 13
+- Symfony 6 (+ API Platform / React Admin)
 
 ## Installation
 
