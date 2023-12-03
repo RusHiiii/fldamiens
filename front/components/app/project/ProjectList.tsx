@@ -20,7 +20,7 @@ const ExperienceList = ({ projects }: ProjectListProps) => {
               </div>
               <img src={project.primaryImage.contentUrl} alt="Image" />
               <figcaption>
-                <span className="title">{project.name}</span><br/>
+                <span className="title">{project.name} - {project.year}</span><br/>
                 <span className="info">{project.shortDescription}</span>
               </figcaption>
             </figure>
