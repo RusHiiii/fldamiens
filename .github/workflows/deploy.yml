@@ -31,7 +31,7 @@ jobs:
               uses: golfzaptw/action-connect-ovpn@master
               id: connect_vpn
               with:
-                  PING_URL: '127.0.0.1'
+                  PING_URL: '192.168.9.32'
                   FILE_OVPN: '.github/vpn/config.ovpn'
                   SECRET: ${{ secrets.SECRET_USERNAME_PASSWORD }}
                   TLS_KEY: ${{ secrets.TLS_KEY }}
@@ -39,10 +39,6 @@ jobs:
                   CA_CRT: ${{ secrets.CA_CRT }}
                   USER_CRT: ${{ secrets.USER_CRT }}
                   USER_KEY: ${{ secrets.USER_KEY }}
-
-            - name: ping
-              run: |
-                ping -c 5 192.168.9.32
 
             # —— Run SSH command for deploy
             - name: SSH to server
