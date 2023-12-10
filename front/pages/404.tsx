@@ -16,12 +16,12 @@ const NotFoundPage: NextPageWithLayout = () => {
                 <h2>Page non trouvée :(</h2>
               </div>
               <p className="top_30">
-                La page que vous demandez n'existe pas. Vous pouvez revenir à l'accueil depuis le menu ou cliquer sur le bouton.
+                La page que vous demandez n&apos;existe pas. Vous pouvez revenir à l&apos;accueil depuis le menu ou cliquer sur le bouton.
               </p>
               <div className="top_30">
                 <Link className="home-btn" href="/">
                   <button className="site-btn">
-                    Retourner à l'accueil
+                    Retourner à l&apos;accueil
                   </button>
                 </Link>
               </div>

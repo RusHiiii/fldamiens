@@ -23,14 +23,14 @@ const HomePage: NextPageWithLayout = () => {
                 <h2>A propos</h2>
               </div>
               <p className="top_30">
-                Curieux et intéressé par le monde de l'informatique depuis longtemps, j'ai décidé d'orienter mes études dans ce domaine. La découverte du web pendant mes années de lycée a renforcé mon idée de travailler dans ce secteur. D’abord en réalisant un DUT Informatique à Clermont-Ferrand puis en me spécialisant dans le développement d'applications Web grâce à la licence professionnelle ‘Développement d’Application Web’ toujours sur Clermont-Ferrand.
+                Curieux et intéressé par le monde de l&apos;informatique depuis longtemps, j&apos;ai décidé d&apos;orienter mes études dans ce domaine. La découverte du web pendant mes années de lycée a renforcé mon idée de travailler dans ce secteur. D&apos;abord en réalisant un DUT Informatique à Clermont-Ferrand puis en me spécialisant dans le développement d&apos;applications Web grâce à la licence professionnelle ‘Développement d&apos;Application Web’ toujours sur Clermont-Ferrand.
                 <br/><br/>
-                Grâce à l’alternance, j’ai eu l’occasion de découvrir le monde du e-commerce en rejoignant le pôle informatique de Glisshop en 2017. À cette période, l'entreprise étant en pleine restructuration de son SI, j’ai eu la chance de travailler sur de gros projets, comme la mise en place du nouveau site, de l’ERP, du WMS....
+                Grâce à l&apos;alternance, j&apos;ai eu l’occasion de découvrir le monde du e-commerce en rejoignant le pôle informatique de Glisshop en 2017. À cette période, l&apos;entreprise étant en pleine restructuration de son SI, j&apos;ai eu la chance de travailler sur de gros projets, comme la mise en place du nouveau site, de l&apos;ERP, du WMS....
                 <br/><br/>
-                J’ai ensuite rejoint les équipes de développement d’ITNetwork en 2019, j’ai eu l’occasion de travailler sur de nombreuses applications, dont une GED pour une importante étude notariale sur Paris, mais aussi le développement d’application plus spécifique dans le domaine de l'hôtellerie ou dans le domaine de la communication. J’ai aussi participé à la maintenance et à l’évolution de nos outils de monitoring et de provisionning de machine.
+                J&apos;ai ensuite rejoint les équipes de développement d&apos;ITNetwork en 2019, j&apos;ai eu l&apos;occasion de travailler sur de nombreuses applications, dont une GED pour une importante étude notariale sur Paris, mais aussi le développement d&apos;application plus spécifique dans le domaine de l&apos;hôtellerie ou dans le domaine de la communication. J&apos;ai aussi participé à la maintenance et à l&apos;évolution de nos outils de monitoring et de provisionning de machine.
                 <br/><br/>
-                Je suis l'actualité notamment sur Symfony, mais pas que, et j’assiste à des conférences techs une ou deux fois dans l’année, comme le forum PHP, Volcamp, Mixit… J’en profite toujours pour rédiger quelques articles sur le blog d’ITNetwork, comme à <a href="https://www.itnetwork.fr/blog/mixit-crepes" target="_blank">Mixit</a> ou à <a href="https://www.itnetwork.fr/blog/retour-volcamp" target="_blank">Volcamp</a>.
-                J’ai posté d'autres articles bien différents comme sur le <a href="https://www.itnetwork.fr/blog/machine-learning-rex" target="_blank">deep learning</a> dans le cadre d’une de nos applications.
+                Je suis l&apos;actualité notamment sur Symfony, mais pas que, et j&apos;assiste à des conférences techs une ou deux fois dans l&apos;année, comme le forum PHP, Volcamp, Mixit… J&apos;en profite toujours pour rédiger quelques articles sur le blog d&apos;ITNetwork, comme à <a href="https://www.itnetwork.fr/blog/mixit-crepes" target="_blank">Mixit</a> ou à <a href="https://www.itnetwork.fr/blog/retour-volcamp" target="_blank">Volcamp</a>.
+                J&apos;ai posté d&apos;autres articles bien différents comme sur le <a href="https://www.itnetwork.fr/blog/machine-learning-rex" target="_blank">deep learning</a> dans le cadre d&apos;une de nos applications.
               </p>
             </section>
           </div>
@@ -68,7 +68,7 @@ const HomePage: NextPageWithLayout = () => {
                           <IconServer width="5em" height="5em" />
                         </div>
                         <span className="title">Chef / Grafana</span>
-                        <p className="little-text">Gestion et monitoring d'une infrastructure</p>
+                        <p className="little-text">Gestion et monitoring d&apos;une infrastructure</p>
                       </div>
                     </div>
                     <div className="col-md-3 col-sm-6 col-xs-12">
@@ -108,7 +108,7 @@ const HomePage: NextPageWithLayout = () => {
                           <IconLinux width="5em" height="5em" />
                         </div>
                         <span className="title">Linux</span>
-                        <p className="little-text">Système d'exploitation (Debian / Ubuntu)</p>
+                        <p className="little-text">Système d&apos;exploitation (Debian / Ubuntu)</p>
                       </div>
                     </div>
                   </div>
@@ -145,7 +145,7 @@ const HomePage: NextPageWithLayout = () => {
                   </div>
                 </li>
                 <li>
-                  <h3>Esprit d'équipe</h3>
+                  <h3>Esprit d&apos;équipe</h3>
                   <div className="progress">
                     <div className="percentage" style={{width: '100%'}}></div>
                   </div>
@@ -161,7 +161,7 @@ const HomePage: NextPageWithLayout = () => {
             <section className="code-skills col-md-6 padding_60">
               <div className="section-title bottom_45">
                 <span></span>
-                <h2>Centres d'intérêt</h2>
+                <h2>Centres d&apos;intérêt</h2>
               </div>
               <ul className="skill-list">
                 <li>

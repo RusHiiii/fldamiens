@@ -1,6 +1,7 @@
 import {Project} from "../../../types/project";
 import IconClone from "../icons/IconClone";
 import Link from "next/link";
+import Image from "next/image";
 
 type ProjectListProps = {
   projects: Array<Project>;
@@ -18,7 +19,7 @@ const ExperienceList = ({ projects }: ProjectListProps) => {
                   <IconClone height="1em" width="1em" />
                 </i>
               </div>
-              <img src={project.primaryImage.contentUrl} alt="Image" />
+              <Image src={project.primaryImage.contentUrl} alt="Image" />
               <figcaption>
                 <span className="title">{project.name} - {project.year}</span><br/>
                 <span className="info">{project.shortDescription}</span>

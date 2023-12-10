@@ -16,12 +16,12 @@ const ErrorPage: NextPageWithLayout = () => {
                 <h2>Erreur :(</h2>
               </div>
               <p className="top_30">
-                Malheureusement, nous n'arrivons pas à construire la page correctement. Vous pouvez revenir à l'accueil depuis le menu ou cliquer sur le bouton.
+                Malheureusement, nous n&apos;arrivons pas à construire la page correctement. Vous pouvez revenir à l&apos;accueil depuis le menu ou cliquer sur le bouton.
               </p>
               <div className="top_30">
                 <Link className="home-btn" href="/">
                   <button className="site-btn">
-                    Retourner à l'accueil
+                    Retourner à l&apos;accueil
                   </button>
                 </Link>
               </div>

@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import {NextPageWithLayout} from "../_app";
 import {Project} from "../../types/project";
 import SocialNetwork from "../../components/app/common/SocialNetwork";
+import Image from "next/image";
 
 type ProjectDetailPageProps = {
     projects: Array<Project>;
@@ -22,7 +23,7 @@ const ProjectDetailPage: NextPageWithLayout<ProjectDetailPageProps> = ({ project
     }
 
     return projects[currentIndex];
-  }, [currentIndex]);
+  }, [currentIndex, projects]);
 
   return (
     <div className="cbp-popup-content-wrap">
@@ -37,7 +38,7 @@ const ProjectDetailPage: NextPageWithLayout<ProjectDetailPageProps> = ({ project
             <>
               <h1 className="blog-title">{currentProject.name}</h1>
               <figure className="top_45 bottom_45">
-                <img src={currentProject.primaryImage.contentUrl} alt="Mon projet" />
+                <Image src={currentProject.primaryImage.contentUrl} alt="Mon projet" />
               </figure>
 
               <div className="section-title bottom_30">
@@ -60,7 +61,7 @@ const ProjectDetailPage: NextPageWithLayout<ProjectDetailPageProps> = ({ project
               )}
 
               <figure className="top_45 bottom_45">
-                <img src={currentProject.secondaryImage.contentUrl} alt="Mon projet" />
+                <Image src={currentProject.secondaryImage.contentUrl} alt="Mon projet" />
               </figure>
               <SocialNetwork />
             </>
