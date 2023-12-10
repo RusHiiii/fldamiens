@@ -42,7 +42,7 @@ jobs:
 
             - name: ping
               run: |
-                ping -n 5 192.168.9.32
+                ping -c 5 192.168.9.32
 
             # —— Run SSH command for deploy
             - name: SSH to server
