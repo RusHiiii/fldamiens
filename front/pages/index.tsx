@@ -160,7 +160,7 @@ const HomePage: NextPageWithLayout = () => {
               </div>
               <ul className="skill-list">
                 <li>
-                  <h3>Ski</h3>
+                  <h3>Ski / Escalade</h3>
                   <div className="progress">
                     <div className="percentage" style={{width: '100%'}}></div>
                   </div>

@@ -1,4 +1,4 @@
-import {ReactElement, useState} from "react";
+import {ReactElement} from "react";
 import AppLayout from "../components/app/layout/AppLayout";
 import Head from "next/head";
 import {Experience} from "../types/experience";

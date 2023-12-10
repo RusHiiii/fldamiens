@@ -772,12 +772,11 @@ ul.timeline{
     background: #fff;
     display: block;
     position: absolute;
-    margin-top: -1px;
+    margin-top: 5px;
 }
 
 .timeline li .line-title{
     font-size: 16px;
-    line-height: 6px;
 }
 
 .timeline li:first-child{
@@ -1847,10 +1846,14 @@ footer .footer .copyright a:hover{
     }
 
     .profile-image {
-        margin-top: -18px;
+        margin: auto;
+        max-width: 50%;
         -webkit-clip-path: polygon(0 9%, 100% 0, 100% 94%, 0% 100%);
         clip-path: polygon(0 9%, 100% 0, 100% 94%, 0% 100%);
-        margin-top: -40px;
+    }
+
+    .profile-name {
+        text-align: center;
     }
 
 }
@@ -1934,6 +1937,16 @@ footer .footer .copyright a:hover{
     .portfolio-content .namenprice .price{
         float: left !important;
         margin-top: 14px;
+    }
+
+    .profile-image {
+        margin: auto;
+        max-width: 50%;
+        margin-top: 0px;
+    }
+
+    .profile-name {
+        text-align: center;
     }
 
 }

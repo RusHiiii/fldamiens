@@ -1,7 +1,6 @@
 import {ReactElement} from "react";
 import AppLayout from "../components/app/layout/AppLayout";
 import Head from "next/head";
-import IconGraduation from "../components/app/icons/IconGraduation";
 import {Education} from "../types/education";
 import {NextPageWithLayout} from "./_app";
 import EducationList from "../components/app/education/EducationList";
