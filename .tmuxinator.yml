@@ -1,6 +1,6 @@
 name: fldamiens
 root: ./
-pre_window: nvm use 16
+pre_window: nvm use 18
 
 windows:
   - front:
