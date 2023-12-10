@@ -1,5 +1,6 @@
 import frenchMessages from "ra-language-french";
 import polyglotI18nProvider from "ra-i18n-polyglot";
+import {I18nProvider} from "ra-core";
 
 const translatedMessage = {
   ...frenchMessages,
@@ -26,6 +27,6 @@ const translatedMessage = {
   }
 };
 
-const i18nProvider = polyglotI18nProvider(() => translatedMessage, 'fr');
+const i18nProvider: I18nProvider = polyglotI18nProvider(() => translatedMessage, 'fr');
 
 export default i18nProvider;

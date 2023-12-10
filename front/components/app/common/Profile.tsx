@@ -1,13 +1,13 @@
-import IconDownload from "../icon/IconDownload";
-import IconCoding from "../icon/IconCoding";
+import IconDownload from "../icons/IconDownload";
+import IconCoding from "../icons/IconCoding";
 import Image from 'next/image'
 
-function Profile() {
+const Profile = () => {
   return (
     <div className="profile">
       <div className="profile-name">
         <span className="name">Florent Damiens</span><br/>
-        <span className="job">Développeur FullStack</span>
+        <span className="job">Développeur Web</span>
       </div>
       <figure className="profile-image">
         <Image width="270" height="270" src="/images/profile.jpg" alt="Profile" />
@@ -30,17 +30,16 @@ function Profile() {
         <li>
           <p><span>Mail :</span> damiens.florent@orange.fr</p>
         </li>
-        <li>
-          <p><span>Poste :</span> ITNetwork</p>
-        </li>
       </ul>
       <div className="col-md-12">
-        <button className="site-btn icon">
-          Télécharger mon CV
-          <div className="rounded">
-            <IconDownload width="1em" height="1em" />
-          </div>
-        </button>
+        <a href="/cv/cv.pdf" download>
+          <button className="site-btn icon">
+            Télécharger mon CV
+            <div className="rounded">
+              <IconDownload width="1em" height="1em" />
+            </div>
+          </button>
+        </a>
       </div>
     </div>
   );

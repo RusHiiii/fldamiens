@@ -14,6 +14,7 @@ import {
 import {Grid, Typography} from "@mui/material";
 import {Box} from "@mui/system";
 import {Experience} from "../../../types/experience";
+import {RichTextInput} from "ra-input-rich-text";
 
 const Title = () => {
   const record = useRecordContext<Experience>();
@@ -47,7 +48,7 @@ export default function EditExperience() {
               <TextInput source="city" fullWidth name="city" label="Ville" validate={[required(), minLength(5)]} />
             </Box>
             <Box flex={1} mr="0.5em">
-              <TextInput fullWidth multiline minRows={5} name="description" source={"description"} label="Description" validate={required()}/>
+              <RichTextInput fullWidth name="description" source={"description"} label="Description" validate={required()}/>
             </Box>
             <Typography variant="h6" gutterBottom>
               Logo

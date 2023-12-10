@@ -12,6 +12,7 @@ import {
 } from 'react-admin';
 import {Grid, Typography} from "@mui/material";
 import {Box} from "@mui/system";
+import {RichTextInput} from "ra-input-rich-text";
 
 export default function CreateProject() {
   const notify = useNotify();
@@ -41,7 +42,20 @@ export default function CreateProject() {
               <TextInput fullWidth multiline minRows={2} name="shortDescription" source={"shortDescription"} label="Courte description" validate={[required(), minLength(5)]}/>
             </Box>
             <Box flex={1} mr="0.5em">
-              <TextInput fullWidth multiline minRows={5} name="description" source={"description"} label="Description" validate={[required(), minLength(5)]}/>
+              <RichTextInput
+                sx={{
+                  '& .RaRichTextInput-editorContent': {
+                    '& .ProseMirror': {
+                      minHeight: '15em'
+                    }
+                  }
+                }}
+                fullWidth
+                name="description"
+                source={"description"}
+                label="Description"
+                validate={required()}
+              />
             </Box>
             <Typography variant="h6" gutterBottom>
               Logo

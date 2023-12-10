@@ -4,6 +4,7 @@ import {NextPage} from "next";
 import {ReactElement, ReactNode} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import './../styles/app.css';
+import './../styles/project.css';
 
 const roboto = Roboto({
   weight: ['400', '500', '700', '900'],

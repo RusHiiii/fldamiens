@@ -1,0 +1,15 @@
+name: fldamiens
+root: ./
+pre_window: nvm use 18
+
+windows:
+  - front:
+      root: front
+      layout: tiled
+      panes:
+        - yarn run dev
+        - ./node_modules/.bin/tsc --watch
+  - back:
+      layout: tiled
+      panes:
+        - symfony server:start

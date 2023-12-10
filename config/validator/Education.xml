@@ -8,7 +8,7 @@
         <property name="name">
             <constraint name="NotNull"/>
             <constraint name="Length">
-                <option name="min">5</option>
+                <option name="min">3</option>
                 <option name="max">50</option>
             </constraint>
         </property>

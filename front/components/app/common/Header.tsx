@@ -1,45 +1,51 @@
-import IconHome from "../icon/IconHome";
-import IconPlane from "../icon/IconPlane";
-import IconBars from "../icon/IconBars";
+import IconHome from "../icons/IconHome";
+import IconPlane from "../icons/IconPlane";
+import IconBars from "../icons/IconBars";
 import Link from "next/link";
-import IconTwitter from "../icon/IconTwitter";
-import IconLinkedin from "../icon/IconLinkedin";
-import IconGithub from "../icon/IconGithub";
+import IconTwitter from "../icons/IconTwitter";
+import IconLinkedin from "../icons/IconLinkedin";
+import IconGithub from "../icons/IconGithub";
+import {useRouter} from "next/router";
+import {useEffect, useState} from "react";
 
-function Menu() {
+const Menu = () => {
+  const router = useRouter();
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+
+  useEffect(() => {
+    setShowMobileMenu(false)
+  }, [router.asPath]);
+
   return (
     <header className="col-md-12">
       <nav>
         <div className="row">
-          <div className="col-lg-8 col-md-12 col-sm-8 col-xs-4">
+          <div className="col-lg-8 col-md-8 col-sm-8 col-xs-4">
             <ul className="tabs">
               <li className="tab">
                 <Link className="home-btn" href="/">
                   <IconHome width="1.5em" height="1.5em" />
                 </Link>
               </li>
-              <li className="tab">
+              <li className={router.pathname == "/formations" ? "tab active" : "tab"}>
                 <Link href="/formations">ETUDES</Link>
               </li>
-              <li className="tab">
+              <li className={router.pathname == "/experiences" ? "tab active" : "tab"}>
                 <Link href="/experiences">EXPERIENCES</Link>
               </li>
-              <li className="tab">
-                <Link href="/portfolio">PROJETS</Link>
-              </li>
-              <li className="tab">
-                <Link href="/contact">CONTACT</Link>
+              <li className={router.pathname == "/projets" ? "tab active" : "tab"}>
+                <Link href="/projets">PROJETS</Link>
               </li>
             </ul>
           </div>
-          <div className="col-lg-4 col-sm-4 col-xs-8 hidden-md dynamic">
-            <a href="mailto:damiens.florent@orange.fr" className="pull-right site-btn icon hidden-xs contact-me hidden-md">
+          <div className="col-lg-4 col-sm-4 col-xs-8 dynamic">
+            <a href="mailto:damiens.florent@orange.fr" className="pull-right site-btn icon hidden-xs contact-me">
               Me contacter
               <div className="rounded">
                 <IconPlane width="0.8em" height="0.8em" />
               </div>
             </a>
-            <div className="hamburger pull-right hidden-lg hidden-md">
+            <div className="hamburger pull-right hidden-lg hidden-md" onClick={() => setShowMobileMenu(!showMobileMenu)}>
               <IconBars width="1em" height="1em" />
             </div>
             <div className="hidden-md social-icons pull-right">
@@ -55,6 +61,30 @@ function Menu() {
             </div>
           </div>
         </div>
+        {showMobileMenu && (
+          <div className="hidden-lg hidden-md">
+            <div className="menuout">
+              <div className="menuin">
+                <ul className="tabs">
+                  <li className="tab">
+                    <Link className="home-btn" href="/">
+                      <IconHome width="1.5em" height="1.5em" />
+                    </Link>
+                  </li>
+                  <li className={router.pathname == "/formations" ? "tab active" : "tab"}>
+                    <Link href="/formations">ETUDES</Link>
+                  </li>
+                  <li className={router.pathname == "/experiences" ? "tab active" : "tab"}>
+                    <Link href="/experiences">EXPERIENCES</Link>
+                  </li>
+                  <li className={router.pathname == "/projets" ? "tab active" : "tab"}>
+                    <Link href="/projets">PROJETS</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );

@@ -1,8 +1,9 @@
 import Profile from "../common/Profile";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
+import {Component, ReactElement} from "react";
 
-function AppLayout({children}) {
+function AppLayout({children} : {children: ReactElement[]}) {
   return (
     <div className="wrapper top_60 container">
       <div className="row">
