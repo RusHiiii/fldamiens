@@ -1,0 +1,60 @@
+name: Full CI deploy process for Symfony
+on:
+    push:
+        branches:
+            - production
+jobs:
+    deploy:
+        name: Fldamiens - Deploy
+        runs-on: ubuntu-latest
+        steps:
+            # —— Setup
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            # —— Install Open VPN Repo
+            - name: Install Open VPN Repo
+              uses: myci-actions/add-deb-repo@10
+              with:
+                repo: deb http://build.openvpn.net/debian/openvpn/release/2.5 focal main
+                repo-name: openvpn
+                keys-asc: https://swupdate.openvpn.net/repos/repo-public.gpg
+
+            # —— Install Open VPN
+            - name: Install Open VPN
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install openvpn
+
+            # —— Connect to VPN
+            - name: Connect VPN
+              uses: golfzaptw/action-connect-ovpn@master
+              id: connect_vpn
+              with:
+                  PING_URL: '192.168.9.32'
+                  FILE_OVPN: '.github/vpn/config.ovpn'
+                  SECRET: ${{ secrets.SECRET_USERNAME_PASSWORD }}
+                  TLS_KEY: ${{ secrets.TLS_KEY }}
+              env:
+                  CA_CRT: ${{ secrets.CA_CRT }}
+                  USER_CRT: ${{ secrets.USER_CRT }}
+                  USER_KEY: ${{ secrets.USER_KEY }}
+
+            # —— Run SSH command for deploy
+            - name: SSH to server
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.REMOTE_SSH_IP }}
+                  username: ${{ secrets.USER }}
+                  password: ${{ secrets.PASSWORD }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      RELEASE=`date +%s`
+                      mkdir ${{ secrets.TARGET_PATH }}/$RELEASE
+                      cd ${{ secrets.TARGET_PATH }}/$RELEASE
+                      git clone https://github.com/RusHiiii/fldamiens.git .
+
+            # —— Kill VPN
+            - name: Kill Open VPN
+              if: always()
+              run: sudo killall openvpn
