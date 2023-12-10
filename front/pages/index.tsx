@@ -23,9 +23,14 @@ const HomePage: NextPageWithLayout = () => {
                 <h2>A propos</h2>
               </div>
               <p className="top_30">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet vitae ex lacinia sagittis. Vestibulum ultrices nisl mauris, sed dictum quam egestas ac. Curabitur eu mi magna. Aliquam et faucibus eros. Morbi tincidunt fermentum enim a tincidunt. Suspendisse potenti. Pellentesque vel dui arcu.
+                Curieux et intéressé par le monde de l'informatique depuis longtemps, j'ai décidé d'orienter mes études dans ce domaine. La découverte du web pendant mes années de lycée a renforcé mon idée de travailler dans ce secteur. D’abord en réalisant un DUT Informatique à Clermont-Ferrand puis en me spécialisant dans le développement d'applications Web grâce à la licence professionnelle ‘Développement d’Application Web’ toujours sur Clermont-Ferrand.
                 <br/><br/>
-                Curabitur eu iaculis nibh, eu tempus sem. Donec nec laoreet sem, in tempus libero. Suspendisse potenti. Nulla facilisi. Nunc ultrices eu nisi rhoncus consequat. Duis ut porttitor ante, sit amet malesuada elit. Proin cursus turpis sem, vel feugiat nisi accumsan quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque laoreet enim sit amet odio vulputate, sit amet lobortis arcu fermentum.
+                Grâce à l’alternance, j’ai eu l’occasion de découvrir le monde du e-commerce en rejoignant le pôle informatique de Glisshop en 2017. À cette période, l'entreprise étant en pleine restructuration de son SI, j’ai eu la chance de travailler sur de gros projets, comme la mise en place du nouveau site, de l’ERP, du WMS....
+                <br/><br/>
+                J’ai ensuite rejoint les équipes de développement d’ITNetwork en 2019, j’ai eu l’occasion de travailler sur de nombreuses applications, dont une GED pour une importante étude notariale sur Paris, mais aussi le développement d’application plus spécifique dans le domaine de l'hôtellerie ou dans le domaine de la communication. J’ai aussi participé à la maintenance et à l’évolution de nos outils de monitoring et de provisionning de machine.
+                <br/><br/>
+                Je suis l'actualité notamment sur Symfony, mais pas que, et j’assiste à des conférences techs une ou deux fois dans l’année, comme le forum PHP, Volcamp, Mixit… J’en profite toujours pour rédiger quelques articles sur le blog d’ITNetwork, comme à <a href="https://www.itnetwork.fr/blog/mixit-crepes" target="_blank">Mixit</a> ou à <a href="https://www.itnetwork.fr/blog/retour-volcamp" target="_blank">Volcamp</a>.
+                J’ai posté d'autres articles bien différents comme sur le <a href="https://www.itnetwork.fr/blog/machine-learning-rex" target="_blank">deep learning</a> dans le cadre d’une de nos applications.
               </p>
             </section>
           </div>
