@@ -62,7 +62,8 @@ jobs:
                       chown -R deploy:www-data var/
                       chmod 775 -R var/
                       cd front/
-                      yarn install
+                      ${{ secrets.YARN_BINARY_PATH }/yarn install
+                      ${{ secrets.YARN_BINARY_PATH }/yarn build
 
             # —— Kill VPN
             - name: Kill Open VPN
