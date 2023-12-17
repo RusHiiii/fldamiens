@@ -50,7 +50,10 @@ jobs:
                   port: ${{ secrets.PORT }}
                   script: |
                       node --version
-                      whoami
+                      source ~/.bashrc
+                      node --version
+                      source ~/.profile
+                      node --version
                       RELEASE=`date +%s`
                       mkdir ${{ secrets.TARGET_PATH }}/$RELEASE
                       cd ${{ secrets.TARGET_PATH }}/$RELEASE
@@ -63,8 +66,8 @@ jobs:
                       chown -R deploy:www-data var/
                       chmod 775 -R var/
                       cd front/
-                      ${{ secrets.YARN_BINARY_PATH }}/yarn install
-                      ${{ secrets.YARN_BINARY_PATH }}/yarn build
+                      yarn install
+                      yarn build
 
             # —— Kill VPN
             - name: Kill Open VPN
