@@ -49,10 +49,8 @@ jobs:
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
                   script: |
-                      exec bash -l
-                      cd /var/www/fldamiens.fr
-                      echo "a" > deploy.log
-                      ./deploy.sh > deploy.log
+                      cd ${{ secrets.TARGET_PATH }}
+                      ./deploy.sh >> ${{ secrets.TARGET_PATH }}/deploy.log
 
             # —— Kill VPN
             - name: Kill Open VPN
