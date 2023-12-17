@@ -53,6 +53,7 @@ jobs:
                       mkdir ${{ secrets.TARGET_PATH }}/$RELEASE
                       cd ${{ secrets.TARGET_PATH }}/$RELEASE
                       git clone https://github.com/RusHiiii/fldamiens.git .
+                      composer self-update --2
 
             # —— Kill VPN
             - name: Kill Open VPN

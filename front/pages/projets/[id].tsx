@@ -38,7 +38,7 @@ const ProjectDetailPage: NextPageWithLayout<ProjectDetailPageProps> = ({ project
             <>
               <h1 className="blog-title">{currentProject.name}</h1>
               <figure className="top_45 bottom_45">
-                <Image src={currentProject.primaryImage.contentUrl} alt="Mon projet" />
+                <img src={currentProject.primaryImage.contentUrl} alt="Mon projet" />
               </figure>
 
               <div className="section-title bottom_30">
@@ -61,7 +61,7 @@ const ProjectDetailPage: NextPageWithLayout<ProjectDetailPageProps> = ({ project
               )}
 
               <figure className="top_45 bottom_45">
-                <Image src={currentProject.secondaryImage.contentUrl} alt="Mon projet" />
+                <img src={currentProject.secondaryImage.contentUrl} alt="Mon projet" />
               </figure>
               <SocialNetwork />
             </>
