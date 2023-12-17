@@ -49,6 +49,7 @@ jobs:
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
                   script: |
+                      exec bash \-l
                       cd ${{ secrets.TARGET_PATH }}
                       sh deploy.sh
 
