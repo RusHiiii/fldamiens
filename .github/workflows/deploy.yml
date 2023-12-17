@@ -48,7 +48,9 @@ jobs:
                   username: ${{ secrets.USER }}
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
-                  script: sh ${{ secrets.TARGET_PATH }}/deploy.sh
+                  script: |
+                      cd ${{ secrets.TARGET_PATH }}
+                      sh deploy.sh
 
             # —— Kill VPN
             - name: Kill Open VPN
