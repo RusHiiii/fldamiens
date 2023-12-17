@@ -51,7 +51,7 @@ jobs:
                   script: |
                       exec bash \-l
                       cd ${{ secrets.TARGET_PATH }}
-                      sh deploy.sh
+                      sh deploy.sh > ${{ secrets.TARGET_PATH }}/deploy.log
 
             # —— Kill VPN
             - name: Kill Open VPN
