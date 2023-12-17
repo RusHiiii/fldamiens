@@ -49,6 +49,7 @@ jobs:
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
                   script: |
+                      nvm use 18
                       RELEASE=`date +%s`
                       mkdir ${{ secrets.TARGET_PATH }}/$RELEASE
                       cd ${{ secrets.TARGET_PATH }}/$RELEASE
