@@ -12,7 +12,7 @@ const EducationLogoList = ({ experiences }: ExperienceLogoListProps) => {
         {experiences.filter((experience: Experience) => experience.image.contentUrl).map((experience: Experience) => (
           <div key={experience.id} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div className="client">
-              <Image src={experience.image.contentUrl} alt="Logo" />
+              <img src={experience.image.contentUrl} alt="Logo" />
             </div>
           </div>
         ))}
