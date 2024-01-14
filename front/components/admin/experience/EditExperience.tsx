@@ -89,7 +89,7 @@ export default function EditExperience() {
               <DateInput source="startedAt" fullWidth name="startedAt" label="Date de début" validate={required()}/>
             </Box>
             <Box flex={1} mr="0.5em">
-              <DateInput source="endedAt" fullWidth name="endedAt" label="Date de fin" validate={required()}/>
+              <DateInput source="endedAt" fullWidth name="endedAt" label="Date de fin"/>
             </Box>
           </Grid>
         </Grid>
