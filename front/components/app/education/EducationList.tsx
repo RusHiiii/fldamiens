@@ -1,6 +1,7 @@
 import IconGraduation from "../../../components/app/icons/IconGraduation";
 import {Education} from "../../../types/education";
 import Date from "../common/Date";
+import DateDiff from "../common/DateDiff";
 
 type EducationListProps = {
   educations: Array<Education>;
@@ -19,7 +20,10 @@ const EducationList = ({ educations }: EducationListProps) => {
         <li key={education.id}>
           <h3 className="line-title">{education.studyType} - {education.name} ({education.city})</h3>
           <span className="date-format">
-            <Date date={education.startedAt} format="MMM YYYY"/> - {education.endedAt ? <Date date={education.endedAt} format="MMM YYYY"/> : "Aujourd'hui"}
+            <div>
+              <Date date={education.startedAt} format="MMM YYYY"/> - {education.endedAt ? <Date date={education.endedAt} format="MMM YYYY"/> : "Aujourd'hui"}
+            </div>
+            <DateDiff dateFrom={education.startedAt} dateTo={education.endedAt} />
           </span>
           <div className="little-text" dangerouslySetInnerHTML={{ __html: education.description }}></div>
         </li>

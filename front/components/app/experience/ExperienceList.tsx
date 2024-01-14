@@ -1,6 +1,7 @@
 import Date from "../common/Date";
 import {Experience} from "../../../types/experience";
 import IconSuitcase from "../icons/IconSuitcase";
+import DateDiff from "../common/DateDiff";
 
 type ExperienceListProps = {
   experiences: Array<Experience>;
@@ -19,7 +20,10 @@ const ExperienceList = ({ experiences }: ExperienceListProps) => {
         <li key={experience.id}>
           <h3 className="line-title">{experience.name} - {experience.company} ({experience.city})</h3>
           <span className="date-format">
-            <Date date={experience.startedAt} format="MMM YYYY"/> - {experience.endedAt ? <Date date={experience.endedAt} format="MMM YYYY"/> : "Aujourd'hui"}
+            <div>
+              <Date date={experience.startedAt} format="MMM YYYY"/> - {experience.endedAt ? <Date date={experience.endedAt} format="MMM YYYY"/> : "Aujourd'hui"}
+            </div>
+            <DateDiff dateFrom={experience.startedAt} dateTo={experience.endedAt} />
           </span>
           <div className="little-text" dangerouslySetInnerHTML={{ __html: experience.description }}></div>
         </li>

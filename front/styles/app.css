@@ -2133,8 +2133,10 @@ ul.profile-information li:before{
     background-color: #fafafa;
 }
 
-.date-format{
+.date-format div{
     text-transform: capitalize;
+    float: left;
+    margin-right: 5px;
 }
 
 .service .icon {

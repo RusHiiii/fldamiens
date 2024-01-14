@@ -30,7 +30,6 @@
             <constraint name="NotNull"/>
         </property>
         <property name="endedAt">
-            <constraint name="NotNull"/>
             <constraint name="GreaterThan">
                 <option name="propertyPath">startedAt</option>
             </constraint>
