@@ -32,7 +32,7 @@ const Profile = () => {
         </li>
       </ul>
       <div className="col-md-12">
-        <a href="/cv/cv.pdf" download>
+        <a href="/cv/cv_Florent-Damiens.pdf" download>
           <button className="site-btn icon">
             Télécharger mon CV
             <div className="rounded">
