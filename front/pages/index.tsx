@@ -9,6 +9,7 @@ import IconUml from "../components/app/icons/IconUml";
 import IconGit from "../components/app/icons/IconGit";
 import {NextPageWithLayout} from "./_app";
 import IconLinux from "../components/app/icons/IconLinux";
+import IconCloudProvider from "../components/app/icons/IconCloudProvider";
 const HomePage: NextPageWithLayout = () => {
   const [showMainSkill, setShowMainSkill] = useState<boolean>(true);
 
@@ -76,7 +77,7 @@ const HomePage: NextPageWithLayout = () => {
                         <div className="icon">
                           <IconDatabase width="5em" height="5em" />
                         </div>
-                        <span className="title">PostgreSQL / MySQL</span>
+                        <span className="title">Postgres / MySQL</span>
                         <p className="little-text">Système de gestion de base de données</p>
                       </div>
                     </div>
@@ -84,15 +85,6 @@ const HomePage: NextPageWithLayout = () => {
                 )}
                 {!showMainSkill && (
                   <div className="row">
-                    <div className="col-md-3 col-sm-6 col-xs-12">
-                      <div className="service">
-                        <div className="icon">
-                          <IconUml width="5em" height="5em" />
-                        </div>
-                        <span className="title">UML / Merise</span>
-                        <p className="little-text">Analyse applicative et de la base de données</p>
-                      </div>
-                    </div>
                     <div className="col-md-3 col-sm-6 col-xs-12">
                       <div className="service">
                         <div className="icon">
@@ -109,6 +101,24 @@ const HomePage: NextPageWithLayout = () => {
                         </div>
                         <span className="title">Linux</span>
                         <p className="little-text">Système d&apos;exploitation (Debian / Ubuntu)</p>
+                      </div>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconCloudProvider width="5em" height="5em" />
+                        </div>
+                        <span className="title">GCP</span>
+                        <p className="little-text">Cloud storage, Big Query, Cloud Function</p>
+                      </div>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-xs-12">
+                      <div className="service">
+                        <div className="icon">
+                          <IconUml width="5em" height="5em" />
+                        </div>
+                        <span className="title">UML / Merise</span>
+                        <p className="little-text">Analyse applicative et de la base de données</p>
                       </div>
                     </div>
                   </div>

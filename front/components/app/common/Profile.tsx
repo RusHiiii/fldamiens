@@ -7,7 +7,7 @@ const Profile = () => {
     <div className="profile">
       <div className="profile-name">
         <span className="name">Florent Damiens</span><br/>
-        <span className="job">Développeur Web</span>
+        <span className="job">Développeur Full-stack</span>
       </div>
       <figure className="profile-image">
         <Image width="270" height="270" src="/images/profile.jpg" alt="Profile" />
