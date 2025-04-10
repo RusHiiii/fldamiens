@@ -50,7 +50,7 @@ jobs:
                   port: ${{ secrets.PORT }}
                   script: |
                       cd ${{ secrets.TARGET_PATH }}
-                      ./deploy.sh >> ${{ secrets.TARGET_PATH }}/deploy.log
+                  #    ./deploy.sh >> ${{ secrets.TARGET_PATH }}/deploy.log
 
             # —— Kill VPN
             - name: Kill Open VPN
